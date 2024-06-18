@@ -1,0 +1,71 @@
+---
+// components/Header.astro
+import { navLinks } from "../data/links.js";
+---
+
+<header class="bg-white text-black py-4 px-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Left container: Logo -->
+    <div class="flex items-center">
+      <img src="image3.svg" alt="Logo" class="h-5" />
+    </div>
+    <!-- Right container: Navigation links for desktop -->
+    <div class="hidden md:flex space-x-6">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="hover:text-blue-600">
+            {link.text}
+          </a>
+        ))
+      }
+    </div>
+    <!-- Hamburger button for mobile -->
+    <button id="menu-button" class="md:hidden flex items-center">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out opacity-0"
+  >
+    <nav class="flex flex-col space-y-2 py-6">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="hover:text-blue-600 ">
+            {link.text}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuButton!.addEventListener("click", () => {
+      if (mobileMenu!.classList.contains("max-h-0")) {
+        mobileMenu!.classList.remove("max-h-0", "opacity-0");
+        mobileMenu!.classList.add("max-h-screen", "opacity-100");
+      } else {
+        mobileMenu!.classList.add("max-h-0", "opacity-0");
+        mobileMenu!.classList.remove("max-h-screen", "opacity-100");
+      }
+    });
+  });
+</script>
