@@ -3,8 +3,8 @@ import { cards } from "../data/cards";
 import Card from "./Card.astro";
 ---
 
-<section class="bg-[#f0f0f0]">
-  <div class="bg-blue-700 text-white p-10">
+<section class="bg-[#f0f0f0] flex flex-col xs:flex-row">
+  <div class="bg-blue-700 text-white p-10 flex">
     <div class="flex items-center p-10">
       <p class="text-2xl">
         Scientifica is a science and technology development company that brings
@@ -15,11 +15,11 @@ import Card from "./Card.astro";
       </p>
     </div>
   </div>
-  <div>
-    <div class="flex m-20">
-      <div class="flex md:flex-col items-start justify-center w-[50%]">
+  <div class="flex m-1">
+    <div class="flex flex-col md:flex-row md:mt-14 md:ml-10">
+      <div class="md:w-[50%] mt-14 ml-6">
         <h2 class="text-6xl pb-10 font-bold">Our history</h2>
-        <p>
+        <p class="text-2xl md:text-base">
           Rooted by renowned Scientists, Scientifica was founded in 2021 after a
           long stretch of planning during which the demanding needs of business
           decision makers were thoroughly studied.
@@ -36,7 +36,7 @@ import Card from "./Card.astro";
           business decision making confidence driven by data.
         </p>
       </div>
-      <div class="grid grid-cols-2 w-[50%] space-x-4">
+      <div class="grid grid-cols- md:flex md:flex-wrap md:w-[50%]">
         {cards.map((card) => <Card {...card} />)}
       </div>
     </div>
