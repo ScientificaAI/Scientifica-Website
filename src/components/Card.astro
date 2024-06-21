@@ -1,41 +1,41 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	logo: string;
+  title: string;
+  body: string;
+  logo: string;
 }
 
 const { title, body, logo } = Astro.props;
 ---
 
-<div class="bg-white flex m-2 rounded-lg w-[38rem] h-[100px] md:w-[250px]">
-	<div class="flex justify-between m-6 space-x-8">
-		<div class="flex justify-between">
-			<div
-				class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100"
-			>
-				<div class="flex">
-					<img src={logo} alt={title} />
-				</div>
-			</div>
-			<div class="flex flex-col ml-[40px]">
-				<div class="flex">
-					<h2 class="font-bold text-2xl">
-						{title}
-					</h2>
-				</div>
-				<div class="flex">
-					<p class="text-gray-500 text-sm">
-						{body}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="bg-white flex m-2 rounded-lg w-[37rem] h-[100px] md:w-[250px]">
+  <div class="flex justify-between m-6 space-x-8">
+    <div class="flex justify-between">
+      <div
+        class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100"
+      >
+        <div class="flex">
+          <img src={logo} alt={title} />
+        </div>
+      </div>
+      <div class="flex flex-col ml-[40px]">
+        <div class="flex">
+          <h2 class="font-bold text-2xl">
+            {title}
+          </h2>
+        </div>
+        <div class="flex">
+          <p class="text-gray-500 text-sm">
+            {body}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-	li {
-		list-style: none;
-	}
+  li {
+    list-style: none;
+  }
 </style>
