@@ -4,22 +4,26 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Storyteller from "../components/Storyteller.astro";
 import Clients from "../components/Clients.astro";
-import Footer from "../components/Footer.astro"
+import Footer from "../components/Footer.astro";
+import Services from "../components/Services.astro";
 ---
 
 <Layout title="Web Cientifica.">
-	<Header />
-	<Hero />
-	<Storyteller />
-	<Clients />
-	<Footer />
+  <Header />
+  <main>
+    <Hero />
+    <Storyteller />
+    <Clients />
+    <Services />
+    <Footer />
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: 0 auto;
-		color: black;
-		font-size: 20px;
-		line-height: 1.6;
-	}
+  main {
+    margin: 0 auto;
+    color: black;
+    font-size: 20px;
+    line-height: 1.6;
+  }
 </style>
