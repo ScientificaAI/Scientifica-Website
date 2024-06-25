@@ -1,38 +1,39 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-import '@fontsource/poppins';
+import "@fontsource/poppins";
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Web Cientifica" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Web Cientifica" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
 </html>
 <style is:global>
+  * {
+    padding: 0;
+    margin: 0;
+  }
 
-	* {
-		padding: 0;
-		margin: 0;
-	}
-
-	html {
-		font-family: 'Poppins', system-ui, sans-serif;
-		background: #fff;
-		background-size: 224px;
-	}
-	body{
-		width:fit-content
-	}
+  html {
+    font-family: "Poppins", system-ui, sans-serif;
+    background: #fff;
+    background-size: 224px;
+  }
+  body {
+    width: fit-content;
+  }
 </style>
