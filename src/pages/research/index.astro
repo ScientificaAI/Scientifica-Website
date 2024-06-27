@@ -1,6 +1,12 @@
 ---
+import Card5 from "../../components/Card5.astro";
+import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import Vector from "../../components/Vector.astro";
+import { card5 } from "../../data/card5";
+import { card6 } from "../../data/card6";
+import { col1, col2, col3 } from "../../data/card7";
+import { list2 } from "../../data/list2";
 ---
 
 <main>
@@ -23,12 +29,131 @@ import Vector from "../../components/Vector.astro";
     </div>
   </section>
 
-  <section></section>
+  <section class="md:mt-20 mt-10 md:ml-10 md:mr-10">
+    <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
+      <h2>Grow business with knowledge-rich research</h2>
+    </div>
+    <div class="p-10 text-center text-xl font-light">
+      <span>
+        Truly valuable innovation is driven by data and newly acquired knowledge
+        -- and research is the key to acquiring both. At Scientifica, our
+        research services encompass your business R&D and research needs. We
+        design and conduct qualitative studies and quantitative research to find
+        answers to the most challenging questions you have utilizing an array of
+        sophisticated research methodologies. Our R&D service provides you with
+        the knowledge to make critical business decisions and build new products
+        with conviction and sound information.
+      </span>
+    </div>
+
+    <div class="md:grid md:grid-cols-2 place-items-center">
+      {card5.map((card) => <Card5 {...card} />)}
+    </div>
+  </section>
+
+  <section class="bg-[#eeeded] pb-10">
+    <div class="flex items-center justify-center pt-10 text-4xl font-bold">
+      <h2>Our Research Services</h2>
+    </div>
+    <div class="p-10 text-center text-xl font-light">
+      <span>
+        Scientifica offers a comprehensive range of research services that
+        combine cutting-edge scientific methodologies with advanced
+        technologies. Our research services are designed to provide valuable
+        insights, drive innovation, and address real-world challenges across
+        various industries. Here are some of the research services provided by
+        Scientifica.
+      </span>
+    </div>
+    <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
+      <ul>
+        {
+          list2.map((list) => (
+            <li class="md:pt-4 pb-2 pt-1 border-b-[.5px] border-gray-200">
+              <span class="text-xl">{list.title}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="flex items-center justify-center pt-10 text-4xl font-bold">
+      <h2>Our Command of research methods</h2>
+    </div>
+    <div class="p-10 text-center text-xl font-light">
+      <span>
+        We conduct our scientific research services for businesses with advanced
+        knowledge of the following research methodologies and approaches
+      </span>
+    </div>
+    <article class="">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 md:place-items-center md:m-2 m-6 p-6 bg-white rounded-xl shadow-md"
+      >
+        <div class="m-6">
+          <ul>
+            {col1.map((raw) => <li class="m-6">{raw.title}</li>)}
+          </ul>
+        </div>
+        <div class="m-6">
+          <ul>
+            {col2.map((raw) => <li class="m-6">{raw.title}</li>)}
+          </ul>
+        </div>
+        <div class="m-6">
+          <ul>
+            {col3.map((raw) => <li class="m-6">{raw.title}</li>)}
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="bg-[#eeeded]">
+    <div
+      class="flex items-center justify-center text-4xl font-bold md:mt-10 ml-4 md:pt-10"
+    >
+      <h2>Why choose our research services</h2>
+    </div>
+
+    <div
+      class="md:grid md:grid-cols-3 place-items-center md:ml-20 md:mr-20 md:mt-10 pb-20"
+    >
+      {
+        card6.map((card) => (
+          <div class="bg-white flex m-4 rounded-lg w-[29rem] h-[100px] md:w-[350px]">
+            <div class="flex justify-between m-6 space-x-8">
+              <div class="flex justify-between">
+                <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
+                  <div class="flex">
+                    <img src={card.logo} alt={card.title} />
+                  </div>
+                </div>
+                <div class="flex flex-col ml-[40px]">
+                  <div class="flex">
+                    <h2 class="font-bold text-xl">{card.title}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Footer />
 </main>
 
 <style>
   #primary {
     background-image: url("capa14.svg");
-    min-height: 400px;
+    min-height: 390px;
+  }
+
+  li {
+    list-style: disc;
   }
 </style>
