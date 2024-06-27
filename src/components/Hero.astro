@@ -1,4 +1,6 @@
 ---
+import ModalForm from "./form/ModalForm.astro";
+
 // components/Hero.astro
 ---
 
@@ -12,15 +14,18 @@
       organization can achieve when there are not limits.
     </span>
     <div
-      class="flex justify-center items-center bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[250px]"
+      class="flex justify-center items-center bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[240px]"
     >
       <button
+        id="btn-modal"
         class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
       >
         Start conversation
       </button>
     </div>
   </div>
+
+  <ModalForm />
 
   <!-- Right section: Background SVG -->
   <div class="w-full h-[500px] md:h-[700px] relative p-2 md:p-0">
