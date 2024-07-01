@@ -1,11 +1,38 @@
 export const list1 = [
-  { title: "Artificial Inteligence (AI) Models" },
-  { title: "Talent Evaluation Models" },
-  { title: "Talent Performance Models" },
-  { title: "Risk Management Models" },
-  { title: "Social Media Models" },
-  { title: "Marketing and Advertising Models" },
-  { title: "Financial Models" },
-  { title: "Biometric Models" },
-  { title: "Innovation Management Models" },
+  {
+    title: "Artificial Inteligence (AI) Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Talent Evaluation Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Talent Performance Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Risk Management Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Social Media Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Marketing and Advertising Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Financial Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Biometric Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
+  {
+    title: "Innovation Management Models",
+    body: "Open Innovation models to facilitate collaboration and idea sharing with external partners. Idea Generation and Selection models to capture, evaluate, and prioritize innovative ideas.   Innovation Portfolio Management models. Product innovation: Design Thinking and User-Centered Design models. Developing new or improved goods or services that benefit the company, such as enhancing the customer experience or entering new markets. Open Innovation: leveraging collaboration and partnerships. Sustainable Innovation: reducing environmental impact, promoting equity, and addressing social challenges associated with products or services.  Disruptive Innovation: Introducing products or services that were previously limited to specific consumers to a wider audience, disrupting established competition channels.",
+  },
 ];

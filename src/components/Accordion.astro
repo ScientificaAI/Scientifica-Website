@@ -1,0 +1,90 @@
+---
+interface Props {
+  title: string;
+  body: string;
+}
+
+const { title, body } = Astro.props;
+---
+
+<div class="item active">
+  <div class="title">
+    <div class="text">{title}</div>
+    <div class="dropdown"><img src="rm1.svg" alt=">" /></div>
+  </div>
+  <div class="contain">
+    <p>
+      {body}
+    </p>
+  </div>
+</div>
+
+<style>
+  .item {
+    background-color: white;
+    width: fit-content;
+    padding: 20px;
+    border: 1px solid wheat;
+    border-radius: 10px;
+    transition: 1s;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .item .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item .title .text {
+    width: calc(100% - 10px);
+  }
+
+  .item .title .dropdown {
+    width: max-content;
+    font-size: x-large;
+    transform: rotate(270deg);
+    transform: 0.5s;
+  }
+
+  .item .contain {
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.5s;
+  }
+
+  .item.active {
+    background-color: gray;
+    cursor: auto;
+  }
+
+  .item.active .title .text {
+    font-weight: bold;
+  }
+
+  .item.active .title .dropdown {
+    transform: rotate(-180deg);
+  }
+
+  .item.active .contain {
+    max-height: 100px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let items = document.querySelectorAll(".item");
+
+    items.forEach((item) => {
+      item.classList.remove("active");
+      item.addEventListener("click", function (event) {
+        if (item.classList.contains("active")) {
+          item.classList.remove("active");
+        } else {
+          item.classList.add("active");
+        }
+      });
+    });
+  });
+</script>

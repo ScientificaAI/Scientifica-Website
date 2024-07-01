@@ -1,4 +1,5 @@
 ---
+import Accordion from "../../components/Accordion.astro";
 import Card3 from "../../components/Card3.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
@@ -38,16 +39,9 @@ import { list1 } from "../../data/list1";
     <div class="flex items-center justify-center pt-10 text-4xl font-bold">
       <h2>Our models</h2>
     </div>
+
     <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
-      <ul>
-        {
-          list1.map((list) => (
-            <li class="md:pt-4 pb-2 pt-1 border-b-[.5px] border-gray-200">
-              <span class="text-xl">{list.title}</span>
-            </li>
-          ))
-        }
-      </ul>
+      {list1.map((list) => <Accordion {...list} />)}
     </div>
 
     <div class="md:m-auto m-6 pt-4 md:max-w-[1190px] md:mb-10">

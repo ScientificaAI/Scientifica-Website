@@ -1,4 +1,5 @@
 ---
+import Accordion from "../../components/Accordion.astro";
 import Card5 from "../../components/Card5.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
@@ -65,16 +66,11 @@ import { list2 } from "../../data/list2";
         Scientifica.
       </span>
     </div>
+
+    <!--Accordion -->
+
     <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
-      <ul>
-        {
-          list2.map((list) => (
-            <li class="md:pt-4 pb-2 pt-1 border-b-[.5px] border-gray-200">
-              <span class="text-xl">{list.title}</span>
-            </li>
-          ))
-        }
-      </ul>
+      {list2.map((list) => <Accordion {...list} />)}
     </div>
   </section>
 
@@ -113,7 +109,7 @@ import { list2 } from "../../data/list2";
 
   <section class="bg-[#eeeded]">
     <div
-      class="flex items-center justify-center text-4xl font-bold md:mt-10 ml-4 md:pt-10"
+      class="flex text-center items-center justify-center text-4xl font-bold md:mt-10 ml-4 md:pt-10"
     >
       <h2>Why choose our research services</h2>
     </div>
