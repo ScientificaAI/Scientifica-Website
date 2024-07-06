@@ -1,42 +1,67 @@
 ---
+import IconHero from "./IconHero.astro";
 import ModalForm from "./form/ModalForm.astro";
 
 // components/Hero.astro
 ---
 
 <section class="flex flex-col w-full h-full md:flex-row items-center bg-white">
-  <!-- Left section: Text content -->
-  <div class="pl-4 md:w-[40%] md:ml-10">
-    <h1 class="text-8xl font-bold mb-4 animate-blurred-fade-in">
-      UNLOCK THE POWER OF AI WITH
-    </h1>
-    <p class="text-8xl text-blue-800 font-bold animate-fade-in">SCIENTIFICA</p>
-    <span class="mt-4 mb-4 text-xl text-start">
-      From expanding knowledge to creating new oportunities, explore what your
-      organization can achieve when there are not limits.
-    </span>
-    <div
-      class="flex justify-center items-center bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[240px]"
-    >
-      <button
-        id="btn-modal"
-        class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
+  <!-- header section: Text content -->
+  <div class="order-1 pl-4 md:w-[40%] md:ml-10 flex flex-col justify-between">
+    <div>
+      <h1
+        class="text-8xl md:text-start text-center font-bold mb-4 animate-blurred-fade-in"
       >
-        Start conversation
-      </button>
+        <span class="block md:inline">UNLOCK</span>
+        <span class="block md:inline">THE POWER OF AI</span>
+        <span class="text-combined">
+          <span>WITH</span>
+          <span class="text-[#0024ff] font-bold animate-fade-in"
+            >SCIENTIFICA</span
+          >
+        </span>
+      </h1>
+    </div>
+
+    <div class="flex">
+      <IconHero class="md:hidden" />
+    </div>
+
+    <!--foot section -->
+    <div class="mt-4 mb-4 order-3 md:order-2">
+      <span
+        class="flex mb-4 md:text-xl text-4xl text-center md:text-start md:w-[660px]"
+      >
+        From expanding knowledge to creating new opportunities, explore what
+        your organization can achieve when there are no limits.
+      </span>
+      <div
+        class="flex justify-center items-center mb-10 bg-[#0024ff] rounded-lg cursor-pointer p-2 w-[800px] m-auto md:m-0 md:w-[400px] hover:bg-blue-500"
+      >
+        <button
+          id="btn-modal"
+          class="text-white text-4xl md:text-2xl font-semibold rounded-lg py-2 px-4"
+        >
+          Start conversation
+        </button>
+      </div>
     </div>
   </div>
 
-  <ModalForm />
-
-  <!-- Right section: Background SVG -->
-  <div class="w-full h-[500px] md:h-[700px] relative p-2 md:p-0">
-    <div class="absolute max-w-[50rem] md:w-full">
-      <img
-        src="Capa1.svg"
-        alt="Background SVG"
-        class="object-cover animate-blurred-fade-in"
-      />
-    </div>
+  <div
+    class="hidden order-2 md:order-3 md:w-[60%] h-[500px] md:h-[700px] p-2 md:p-0 md:flex justify-center items-center"
+  >
+    <IconHero class="md:max-w-[50rem] md:w-full" />
   </div>
+  <!--hero section -->
 </section>
+
+<ModalForm />
+
+<style>
+  @media (max-width: 767px) {
+    .text-combined {
+      display: inline;
+    }
+  }
+</style>

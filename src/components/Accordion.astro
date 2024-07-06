@@ -26,7 +26,7 @@ const { title, body } = Astro.props;
     padding: 20px;
     border: 1px solid wheat;
     border-radius: 10px;
-    transition: 1s;
+    transition: 0.5s;
     margin-bottom: 10px;
     cursor: pointer;
   }
@@ -61,6 +61,7 @@ const { title, body } = Astro.props;
 
   .item.active .title .text {
     font-weight: bold;
+    color: white;
   }
 
   .item.active .title .dropdown {
@@ -69,6 +70,7 @@ const { title, body } = Astro.props;
 
   .item.active .contain {
     max-height: 100px;
+    color: white;
   }
 </style>
 

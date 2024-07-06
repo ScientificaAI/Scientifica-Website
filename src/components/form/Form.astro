@@ -1,0 +1,25 @@
+---
+import ExperienceInfo from "./ExperienceInfo.astro";
+import LookingForInfo from "./LookingForInfo.astro";
+import PersonalInfo from "./PersonalInfo.astro";
+import StudiesInfo from "./StudiesInfo.astro";
+---
+
+<form action="/api/form/post" method="post">
+  <PersonalInfo />
+
+  <StudiesInfo />
+
+  <ExperienceInfo />
+
+  <LookingForInfo />
+</form>
+
+<div class="mt-20">
+  <button
+    type="submit"
+    class="text-white inline-flex items-center bg-blue-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+  >
+    SEND
+  </button>
+</div>

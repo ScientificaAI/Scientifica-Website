@@ -4,8 +4,8 @@ import Card2 from "./Card2.astro";
 ---
 
 <section class="flex-1 md:m-10 md:p-8">
-  <div class="text-5xl mb-6 mt-8 font-bold text-center">
-    <h2>Our services</h2>
+  <div class="text-5xl my-10 font-bold text-center">
+    <h2 class="text-6xl md:text-5xl">Our services</h2>
   </div>
 
   <div class="grid md:grid-cols-2 grid-cols-1">
@@ -13,13 +13,14 @@ import Card2 from "./Card2.astro";
   </div>
 
   <div
-    class="m-4 md:m-auto bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[240px]"
+    class="md:block md:m-auto flex justify-center items-center mb-10 bg-[#0024ff] rounded-lg cursor-pointer p-2 w-[800px] m-auto md:w-[400px] hover:bg-blue-500"
   >
-    <button
-      class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
+    <a
+      href="/services"
+      class="text-white md:flex md:justify-center md:items-center text-4xl md:text-2xl font-semibold text-center rounded-lg py-2 px-4"
     >
       See your Services
-    </button>
+    </a>
   </div>
 </section>
 

@@ -1,114 +1,110 @@
 ---
 import Accordion from "../../components/Accordion.astro";
 import Card3 from "../../components/Card3.astro";
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
 import Vector from "../../components/Vector.astro";
 import ModalForm from "../../components/form/ModalForm.astro";
 import { card3 } from "../../data/card3";
 import { card4 } from "../../data/card4";
 import { list1 } from "../../data/list1";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<main>
-  <Header />
+<Layout title="services page">
+  <main>
+    <!--Hero Services Page -->
+    <section id="primary">
+      <Vector />
+      <div class="m-auto pb-4 pt-4">
+        <h1 class="text-8xl font-bold text-center">Services</h1>
+      </div>
+      <div class="m-auto max-w-[750px]">
+        <p class="text-2xl font-light text-center">
+          With science at our core, we're a powerhouse in utilizing science, and
+          engineering practical solutions to lead you into the future.
+        </p>
+      </div>
+    </section>
 
-  <!--Hero Services Page -->
-  <section id="primary">
-    <Vector />
-    <div class="m-auto pb-4 pt-4">
-      <h1 class="text-8xl font-bold text-center">Services</h1>
-    </div>
-    <div class="m-auto max-w-[750px]">
-      <p class="text-2xl font-light text-center">
-        With science at our core, we're a powerhouse in utilizing science, and
-        engineering practical solutions to lead you into the future.
-      </p>
-    </div>
-  </section>
+    <!--Render cards -->
+    <section class="md:m-10 md:p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch">
+        {card3.map((card) => <Card3 {...card} />)}
+      </div>
+    </section>
 
-  <!--Render cards -->
-  <section class="md:m-10 md:p-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch">
-      {card3.map((card) => <Card3 {...card} />)}
-    </div>
-  </section>
+    <!--Our Services section -->
+    <section class="bg-[#eeeded]">
+      <div class="flex items-center justify-center pt-10 text-4xl font-bold">
+        <h2>Our models</h2>
+      </div>
 
-  <!--Our Services section -->
-  <section class="bg-[#eeeded]">
-    <div class="flex items-center justify-center pt-10 text-4xl font-bold">
-      <h2>Our models</h2>
-    </div>
+      <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
+        {list1.map((list) => <Accordion {...list} />)}
+      </div>
 
-    <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
-      {list1.map((list) => <Accordion {...list} />)}
-    </div>
-
-    <div class="md:m-auto m-6 pt-4 md:max-w-[1190px] md:mb-10">
-      <p class="text-xl text-center w-full">
-        By partnering with Scientifica.ai, you gain access to cutting-edge
-        technologies, scientific expertise, and a dedicated team that is
-        passionate about driving your success. We are committed to delivering
-        solutions that exceed your expectations, empower your business, and
-        enable you to thrive in today's fast-paced and competitive landscape.
-        Unlock the power of Scientifica and experience the difference for
-        yourself.
-      </p>
-    </div>
-
-    <div
-      class="md:m-auto bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[230px] m-auto mb-10"
-    >
-      <button
-        id="btn-modal"
-        class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
-      >
-        Start conversation
-      </button>
-    </div>
-
-    <article>
-      <div
-        class="flex items-center justify-center text-4xl font-bold md:mt-10 ml-4"
-      >
-        <h2>Why choose our business services</h2>
+      <div class="md:m-auto m-6 pt-4 md:max-w-[1190px] md:mb-10">
+        <p class="text-xl text-center w-full">
+          By partnering with Scientifica.ai, you gain access to cutting-edge
+          technologies, scientific expertise, and a dedicated team that is
+          passionate about driving your success. We are committed to delivering
+          solutions that exceed your expectations, empower your business, and
+          enable you to thrive in today's fast-paced and competitive landscape.
+          Unlock the power of Scientifica and experience the difference for
+          yourself.
+        </p>
       </div>
 
       <div
-        class="md:grid md:grid-cols-3 place-items-center md:ml-20 md:mr-20 md:mt-10 pb-20"
+        class="md:m-auto bg-blue-700 rounded-lg cursor-pointer p-2 md:max-w-[230px] m-auto mb-10"
       >
-        {
-          card4.map((card) => (
-            <div class="bg-white flex m-4 rounded-lg w-[29rem] h-[100px] md:w-[350px]">
-              <div class="flex justify-between m-6 space-x-8">
-                <div class="flex justify-between">
-                  <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
-                    <div class="flex">
-                      <img src={card.logo} alt={card.title} />
+        <button
+          id="btn-modal"
+          class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
+        >
+          Start conversation
+        </button>
+      </div>
+
+      <article>
+        <div
+          class="flex items-center justify-center text-4xl font-bold md:mt-10 ml-4"
+        >
+          <h2>Why choose our business services</h2>
+        </div>
+
+        <div
+          class="md:grid md:grid-cols-3 place-items-center md:ml-20 md:mr-20 md:mt-10 pb-20"
+        >
+          {
+            card4.map((card) => (
+              <div class="bg-white flex m-4 rounded-lg w-[29rem] h-[100px] md:w-[350px]">
+                <div class="flex justify-between m-6 space-x-8">
+                  <div class="flex justify-between">
+                    <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
+                      <div class="flex">
+                        <img src={card.logo} alt={card.title} />
+                      </div>
                     </div>
-                  </div>
-                  <div class="flex flex-col ml-[40px]">
-                    <div class="flex">
-                      <h2 class="font-bold text-xl">{card.title}</h2>
+                    <div class="flex flex-col ml-[40px]">
+                      <div class="flex">
+                        <h2 class="font-bold text-xl">{card.title}</h2>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))
-        }
-      </div>
-    </article>
-  </section>
+            ))
+          }
+        </div>
+      </article>
+    </section>
+    <ModalForm />
+  </main>
+</Layout>
 
-  <ModalForm />
-
-  <Footer />
-
-  <style>
-    #primary {
-      background-image: url("Capa11.svg");
-      min-height: 400px;
-    }
-  </style>
-</main>
+<style>
+  #primary {
+    background-image: url("Capa11.svg");
+    min-height: 400px;
+  }
+</style>

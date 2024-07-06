@@ -4,22 +4,24 @@ import Card from "./Card.astro";
 ---
 
 <section class="bg-[#f0f0f0] flex flex-col xs:flex-row">
-  <div class="bg-blue-700 text-white p-10 flex">
+  <div class="bg-[#0024ff] text-white p-10 flex">
     <div class="flex items-center p-10">
-      <p class="text-2xl">
-        Scientifica is a science and technology development company that brings
-        together scientific research and AI-driven technology to help businesses
-        make better decisions. Whether you need to solve a business problem,
-        create and determine the viability of a new product, or need an AI
-        solution use case to enhance your product ideas, we have you covered.
+      <p class="text-4xl md:text-2xl text-center md:text-start">
+        We take pride in bringing together the authenticity of scientific
+        research and AI, merging the two with clients'business vision to create
+        awe-inspiring AI solutions for business. Driven with the vision to
+        provide clients with impeccable services and solutions that create value
+        and optimize operations, we build purpose-driven AI software products
+        developed around every client's specific needs.
       </p>
     </div>
   </div>
-  <div class="flex m-1 mb-20">
-    <div class="flex flex-col md:flex-row md:mt-14 md:ml-10">
-      <div class="md:w-[50%] mt-14 md:mt-2 ml-6">
-        <h2 class="text-6xl pb-10 font-bold">Our history</h2>
-        <p class="text-2xl md:text-base">
+
+  <div class="flex flex-col mb-20 md:mx-20 mx-10">
+    <h2 class="text-5xl font-bold flex pt-20">Our history</h2>
+    <div class="flex items-center justify-center flex-col md:flex-row">
+      <div class="md:w-[50%] mt-14 md:mt-10">
+        <p class="text-4xl md:text-base">
           Rooted by renowned Scientists, Scientifica was founded in 2021 after a
           long stretch of planning during which the demanding needs of business
           decision makers were thoroughly studied.
@@ -36,8 +38,9 @@ import Card from "./Card.astro";
           business decision making confidence driven by data.
         </p>
       </div>
+
       <div
-        class="grid grid-cols-1 md:grid md:grid-cols-2 md:place-items-center md:w-[50%]"
+        class="grid grid-cols-1 md:grid md:grid-cols-2 md:place-items-end md:w-[50%] md:m-16 my-10"
       >
         {cards.map((card) => <Card {...card} />)}
       </div>

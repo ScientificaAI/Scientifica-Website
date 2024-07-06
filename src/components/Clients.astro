@@ -1,19 +1,28 @@
-<section class="flex flex-col text-2xl items-center justify-center bg-blue-950">
+---
+import IconCompany from "./icons/IconCompany.astro";
+import IconStartup from "./icons/IconStartup.astro";
+---
+
+<section class="flex flex-col items-center justify-center bg-[#000423]">
   <div class="flex flex-col m-10">
     <div class="text-center">
-      <h2 class="text-white font-bold text-5xl">Our clients</h2>
+      <h2 class="text-white my-10 font-extrabold text-6xl md:text-5xl">
+        Our clients
+      </h2>
     </div>
 
     <div class="flex flex-col md:flex-row m-10">
-      <div class="mb-20 bg-white text-blue-950 md:w-[50%] rounded-xl p-10">
+      <div
+        class="mb-20 text-white hover:bg-white hover:text-blue-950 md:w-[50%] rounded-xl p-10"
+      >
         <div>
-          <img src="Vector7.svg" alt="logo" />
+          <IconStartup />
         </div>
         <div class="mt-4 mb-4">
-          <h3 class="text-4xl font-bold">Startups</h3>
+          <h3 class="md:text-4xl py-6 font-bold text-5xl">Startups</h3>
         </div>
         <div>
-          <p class="md:text-lg">
+          <p class="md:text-lg text-3xl">
             cientifica invests in startups and offers unparalleled access to
             cutting-edge science and technology that augment capabilities to
             allow business scale faster, stronger, and safer. We have built a
@@ -28,15 +37,19 @@
         </div>
       </div>
 
-      <div class="mb-10 md:ml-20 md:w-[50%] p-10 rounded-xl">
-        <div class="">
-          <img src="Vector4.svg" alt="logo" />
+      <div
+        class="mb-10 md:ml-20 md:w-[50%] p-10 rounded-xl text-white hover:bg-white hover:text-blue-950"
+      >
+        <div>
+          <IconCompany />
         </div>
         <div class="mt-4 mb-4">
-          <h3 class="text-white text-4xl font-bold">Established companies</h3>
+          <h3 class="md:text-4xl py-6 font-bold text-5xl">
+            Established companies
+          </h3>
         </div>
         <div>
-          <p class="text-white md:text-lg">
+          <p class="md:text-lg text-3xl">
             Scientifica launches and incubates advanced AI-First solutions in
             partnership with established companies giving these organizations
             unparalleled access to cutting-edge science and technology. Carry
