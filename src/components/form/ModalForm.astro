@@ -52,16 +52,18 @@ import HeaderModal from "./HeaderModal.astro";
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", (event) => {
+  document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("defaultModal");
-    const openModalButton = document.getElementById("btn-modal");
+    const openModalButton = document.querySelectorAll(".btn-modal");
     const closeModalButton = modal!.querySelector(
       '[data-modal-toggle="defaultModal"]'
     );
 
-    openModalButton!.addEventListener("click", () => {
-      modal!.classList.remove("hidden");
-      modal!.classList.add("flex");
+    openModalButton.forEach((button) => {
+      button.addEventListener("click", () => {
+        modal!.classList.remove("hidden");
+        modal!.classList.add("flex");
+      });
     });
 
     closeModalButton!.addEventListener("click", () => {
