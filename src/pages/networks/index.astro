@@ -1,7 +1,9 @@
 ---
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import IconFlag from "../../components/IconFlag.astro";
 import Vector from "../../components/Vector.astro";
+import ModalForm from "../../components/form/ModalForm.astro";
 import { list3 } from "../../data/list3";
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -10,9 +12,11 @@ import Layout from "../../layouts/Layout.astro";
   <main>
     <!--Hero Services Page -->
     <section id="primary">
-      <Vector />
-      <div class="m-auto pb-4 pt-4">
-        <h1 class="text-8xl font-bold text-center">Join our Network</h1>
+      <div class="hidden md:flex">
+        <Vector />
+      </div>
+      <div class="m-auto pb-4 md:pt-4">
+        <h1 class="text-6xl font-bold text-center">Join our Network</h1>
       </div>
       <div class="m-auto max-w-[750px] pb-10">
         <p class="text-xl font-extralight text-center">
@@ -24,10 +28,10 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!--Mission section -->
-    <section class="bg-[#000423] p-14">
+    <section class="bg-[#000423] p-6 md:p-14">
       <div class="bg-white p-6 rounded-xl md:ml-6 md:mr-6">
         <div>
-          <img src="ar11.svg" alt="ar11" />
+          <IconFlag />
         </div>
         <div class="text-2xl font-bold mt-2 mb-2"><h2>Our mission</h2></div>
         <div>
@@ -56,13 +60,16 @@ import Layout from "../../layouts/Layout.astro";
     <section class="m-10">
       <div class="md:flex items-center justify-center md:m-10">
         <div class="md:flex-1 text-4xl md:mr-10 font-bold text-center mb-8">
-          <h3>Join our <span class="text-blue-700">Network</span></h3>
+          <h3>Join our <span class="text-[#0024ff]">Network</span></h3>
         </div>
         <div class="md:grid md:grid-cols-2 gap-4 md:mr-10">
           {
             list3.map((raw) => (
-              <div class="md:m-auto bg-blue-700 rounded-lg cursor-pointer p-2 md:min-w-[350px] m-auto mb-10">
-                <button class="bg-blue-700 text-white text-xl font-semibold text-center rounded-lg py-2 px-4">
+              <div class="md:m-auto bg-[#0024ff] hover:scale-105 hover:opacity-75 rounded-lg cursor-pointer p-2 md:min-w-[350px] m-auto mb-10">
+                <button
+                  id="btn-modal"
+                  class=" text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
+                >
                   {raw.title}
                 </button>
               </div>
@@ -71,6 +78,7 @@ import Layout from "../../layouts/Layout.astro";
         </div>
       </div>
     </section>
+    <ModalForm />
   </main>
 </Layout>
 

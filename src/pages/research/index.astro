@@ -1,7 +1,9 @@
 ---
 import Accordion from "../../components/Accordion.astro";
+import Accordion2 from "../../components/Accordion2.astro";
 import Card5 from "../../components/Card5.astro";
 import Footer from "../../components/Footer.astro";
+import GridSection from "../../components/GridSection.astro";
 import Header from "../../components/Header.astro";
 import Vector from "../../components/Vector.astro";
 import { card5 } from "../../data/card5";
@@ -21,17 +23,17 @@ import Layout from "../../layouts/Layout.astro";
       </div>
       <div class="m-auto max-w-[1050px]">
         <p class="text-2xl font-light text-center">
-          We offer a comprehensive set of scientific research services that
-          provide sound knowledge and actionable information to businesses
-          regarding their product plans and business problems. Led by a team of
-          subject matter experts, we design and conduct sophisticated studies
-          that meet client needs and deliver answers.
+          We conduct applied research to bridge the gap between theoretical
+          knowledge and practical applications. Our team of experts leverages
+          scientific principles, emerging technologies, and industry best
+          practices to develop innovative solutions that address specific
+          business needs and challenges.
         </p>
       </div>
     </section>
 
     <section class="md:mt-20 mt-10 md:ml-10 md:mr-10">
-      <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
+      <!-- <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
         <h2>Grow business with knowledge-rich research</h2>
       </div>
       <div class="p-10 text-center text-xl font-light">
@@ -46,18 +48,16 @@ import Layout from "../../layouts/Layout.astro";
           critical business decisions and build new products with conviction and
           sound information.
         </span>
-      </div>
+      </div> -->
 
-      <div class="md:grid md:grid-cols-2 place-items-center">
-        {card5.map((card) => <Card5 {...card} />)}
-      </div>
+      <Card5 />
     </section>
 
     <section class="bg-[#eeeded] pb-10">
       <div class="flex items-center justify-center pt-10 text-4xl font-bold">
         <h2>Our Research Services</h2>
       </div>
-      <div class="p-10 text-center text-xl font-light">
+      <div class="p-10 text-center text-2xl font-light">
         <span>
           Scientifica offers a comprehensive range of research services that
           combine cutting-edge scientific methodologies with advanced
@@ -71,36 +71,37 @@ import Layout from "../../layouts/Layout.astro";
       <!--Accordion -->
 
       <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
-        {list2.map((list) => <Accordion {...list} />)}
+        {list2.map((list) => <Accordion2 {...list} />)}
       </div>
     </section>
 
     <section>
       <div class="flex items-center justify-center pt-10 text-4xl font-bold">
-        <h2>Our Command of research methods</h2>
+        <h2 class="text-center">Our Command of research methods</h2>
       </div>
-      <div class="p-10 text-center text-xl font-light">
-        <span>
+      <div class="flex items-center justify-center p-10 text-2xl font-light">
+        <span class="text-center">
           We conduct our scientific research services for businesses with
           advanced knowledge of the following research methodologies and
           approaches
         </span>
       </div>
-      <article class="">
+
+      <article class="md:m-10">
         <div
           class="grid grid-cols-1 md:grid-cols-3 md:place-items-center md:m-2 m-6 p-6 bg-white rounded-xl shadow-md"
         >
-          <div class="m-6">
+          <div class="md:m-6">
             <ul>
               {col1.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
           </div>
-          <div class="m-6">
+          <div class="md:m-6">
             <ul>
               {col2.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
           </div>
-          <div class="m-6">
+          <div class="md:m-6">
             <ul>
               {col3.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
@@ -109,37 +110,8 @@ import Layout from "../../layouts/Layout.astro";
       </article>
     </section>
 
-    <section class="bg-[#eeeded]">
-      <div
-        class="flex text-center items-center justify-center text-4xl font-bold md:mt-10 ml-4 md:pt-10"
-      >
-        <h2>Why choose our research services</h2>
-      </div>
-
-      <div
-        class="md:grid md:grid-cols-3 place-items-center md:ml-20 md:mr-20 md:mt-10 pb-20"
-      >
-        {
-          card6.map((card) => (
-            <div class="bg-white flex m-4 rounded-lg w-[29rem] h-[100px] md:w-[350px]">
-              <div class="flex justify-between m-6 space-x-8">
-                <div class="flex justify-between">
-                  <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
-                    <div class="flex">
-                      <img src={card.logo} alt={card.title} />
-                    </div>
-                  </div>
-                  <div class="flex flex-col ml-[40px]">
-                    <div class="flex">
-                      <h2 class="font-bold text-xl">{card.title}</h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+    <section class="bg-[#eeeded] py-10">
+      <GridSection title="Why choose our research services" card={card6} />
     </section>
   </main>
 </Layout>

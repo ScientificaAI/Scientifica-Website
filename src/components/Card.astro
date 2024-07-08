@@ -1,37 +1,29 @@
 ---
-interface Props {
-  title: string;
-  body: string;
-  logo: string;
-}
-
-const { title, body, logo } = Astro.props;
+import { cards } from "../data/cards";
 ---
 
-<div class="bg-white flex m-2 rounded-lg w-[760px] md:w-[250px] md:h-[100px]">
-  <div class="flex items-center justify-between m-6 space-x-8">
-    <div
-      class="flex items-center justify-center md:w-[48px] md:h-[48px] w-[68px] h-[68px] rounded-lg bg-blue-100"
-    >
-      <div class="flex w-10 h-10 md:w-4 md:h-4">
-        <img src={logo} alt={title} />
-      </div>
-    </div>
+{
+  cards.map((card) => (
+    <div class="bg-white flex m-2 rounded-lg w-[760px] md:w-[250px] md:h-[100px]">
+      <div class="flex items-center justify-between m-6 space-x-8">
+        <div class="flex items-center justify-center md:w-[48px] md:h-[48px] w-[68px] h-[68px] rounded-lg bg-blue-100">
+          <div class="flex w-10 h-10 md:w-4 md:h-4">
+            <card.logo />
+          </div>
+        </div>
 
-    <div class="flex flex-col ml-[40px]">
-      <div class="flex">
-        <span class="font-bold md:text-2xl text-4xl">
-          {title}
-        </span>
-      </div>
-      <div class="flex">
-        <p class="text-gray-500 text-2xl md:text-sm">
-          {body}
-        </p>
+        <div class="flex flex-col ml-[40px]">
+          <div class="flex">
+            <span class="font-bold md:text-2xl text-4xl">{card.title}</span>
+          </div>
+          <div class="flex">
+            <p class="text-gray-500 text-2xl md:text-sm">{card.body}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  ))
+}
 
 <style>
   li {

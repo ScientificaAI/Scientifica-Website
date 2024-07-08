@@ -1,8 +1,15 @@
+import Bar1 from "../pages/services/icons/Bar1.astro";
+import Bar2 from "../pages/services/icons/Bar2.astro";
+import Bar3 from "../pages/services/icons/Bar3.astro";
+import Bar4 from "../pages/services/icons/Bar4.astro";
+import Bar5 from "../pages/services/icons/Bar5.astro";
+import Bar6 from "../pages/services/icons/Bar6.astro";
+
 export const card4 = [
-  { title: "Unmatched Expertise", logo: "bar1.svg" },
-  { title: "Speed of Service", logo: "bar2.svg" },
-  { title: "Proof of Concept", logo: "bar3.svg" },
-  { title: "Inpeccable Reporting", logo: "bar4.svg" },
-  { title: "Client Support", logo: "bar5.svg" },
-  { title: "Streamlined Processes", logo: "bar6.svg" },
+  { title: "Unmatched Expertise", logo: Bar1 },
+  { title: "Speed of Service", logo: Bar2 },
+  { title: "Proof of Concept", logo: Bar3 },
+  { title: "Impeccable Reporting", logo: Bar4 },
+  { title: "Client Support", logo: Bar5 },
+  { title: "Streamlined Processes", logo: Bar6 },
 ];

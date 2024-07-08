@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  body: string[];
+  body: string;
 }
 
 const { title, body } = Astro.props;
@@ -13,17 +13,7 @@ const { title, body } = Astro.props;
     <div class="dropdown"><img src="rm1.svg" alt=">" /></div>
   </div>
   <div class="contain">
-    {
-      Array.isArray(body) ? (
-        <ul>
-          {body.map((point) => (
-            <li>{point}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>{body}</p>
-      )
-    }
+    <p>{body}</p>
   </div>
 </div>
 
