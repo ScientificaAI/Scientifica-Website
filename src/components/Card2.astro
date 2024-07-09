@@ -1,4 +1,6 @@
 ---
+import IconArrow from "./IconArrow.astro";
+
 interface Props {
   title: string;
   body: string;
@@ -20,7 +22,10 @@ const { title, body } = Astro.props;
     <button
       class="hover:border-b-4 hover:border-indigo-500 transition-all ease-in"
     >
-      <span class="text-2xl"> <a href="/services"> More Info ➡️ </a></span>
+      <a href="/services" class="text-2xl flex items-center gap-4">
+        More Info
+        <IconArrow />
+      </a>
     </button>
   </div>
 </div>
