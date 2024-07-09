@@ -64,7 +64,7 @@ import Layout from "../../layouts/Layout.astro";
           {
             list3.map((raw) => (
               <div class="md:m-auto bg-[#0024ff] hover:scale-105 hover:opacity-75 rounded-lg cursor-pointer p-2 md:min-w-[350px] m-auto mb-10">
-                <button class="btn-modal text-white text-xl font-semibold text-center rounded-lg py-2 px-4">
+                <button class="btn-modal text-white text-xl font-semibold text-center rounded-lg py-2 px-4 w-full">
                   {raw.title}
                 </button>
               </div>
@@ -79,7 +79,7 @@ import Layout from "../../layouts/Layout.astro";
 
 <style>
   #primary {
-    background-image: url("capa15.svg");
+    background-image: url("/public/capa15.svg");
     min-height: 400px;
   }
 </style>
