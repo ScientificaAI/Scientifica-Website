@@ -6,17 +6,13 @@ import { navLinks } from "../data/links.js";
   <div class="container mr-auto flex justify-between items-center">
     <!-- Left container: Logo -->
     <div class="flex items-center md:pl-10">
-      <img
-        src="https://scientifica-web.s3.us-east-2.amazonaws.com/logo.png"
-        alt="Logo"
-        class="h-10"
-      />
+      <img src="/public/logo.png" alt="Logo" class="h-10" />
     </div>
     <!-- Right container: Navigation links for desktop -->
     <div class="hidden md:flex space-x-6">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="hover:text-blue-600">
+          <a href={link.href} class="hover:text-blue-700">
             {link.text}
           </a>
         ))
