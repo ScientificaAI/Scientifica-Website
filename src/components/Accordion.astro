@@ -97,7 +97,7 @@ const { title, body } = Astro.props;
 
     items.forEach((item) => {
       item.classList.remove("active");
-      item.addEventListener("click", function (event) {
+      item.addEventListener("click", function () {
         if (item.classList.contains("active")) {
           item.classList.remove("active");
         } else {
