@@ -1,4 +1,6 @@
 ---
+import IconArrow2 from "./IconArrow2.astro";
+
 interface Props {
   title: string;
   body: string[];
@@ -10,7 +12,7 @@ const { title, body } = Astro.props;
 <div class="item">
   <div class="title">
     <div class="text">{title}</div>
-    <div class="dropdown"><img src="rm1.svg" alt=">" /></div>
+    <div class="dropdown"><IconArrow2 /></div>
   </div>
   <div class="contain">
     {
