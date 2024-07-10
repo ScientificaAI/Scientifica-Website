@@ -7,13 +7,40 @@ interface Props {
 const { title, body } = Astro.props;
 ---
 
-<div class="flex-1 m-6 p-6 bg-white rounded-xl shadow-md">
-  <div class="text-2xl mb-6 font-semibold">
-    <h2>{title}</h2>
-  </div>
-  <div>
-    <p class="text-2xl text-gray-400 line-clamp-8">
+<div class="scroll-reveal flex flex-col m-6 p-6 bg-white rounded-xl shadow-md">
+  <h2 class="text-2xl mb-6 font-semibold"><span>{title}</span></h2>
+
+  <p class="text-2xl">
+    <span>
       {body}
-    </p>
-  </div>
+    </span>
+  </p>
 </div>
+
+<style>
+  .scroll-reveal span {
+    color: hsla(0, 0%, 11%, 0.2);
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-image: linear-gradient(90deg, black, black);
+    animation: scroll-reveal linear forwards;
+    animation-timeline: view();
+  }
+
+  .scroll-reveal h2 span {
+    animation-range-start: cover 20vh;
+    animation-range-end: cover 30vh;
+  }
+
+  .scroll-reveal p span {
+    animation-range-start: cover 22vh;
+    animation-range-end: contain 30vh;
+  }
+
+  @keyframes scroll-reveal {
+    to {
+      background-size: 100% 100%;
+    }
+  }
+</style>
