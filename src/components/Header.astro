@@ -1,5 +1,7 @@
 ---
 import { navLinks } from "../data/links.js";
+import IconLinkedin from "./IconLinkedin.astro";
+import IconMedium from "./IconMedium.astro";
 ---
 
 <header class="bg-white text-black md:py-2 pb-6 px-8 py-10">
@@ -16,7 +18,7 @@ import { navLinks } from "../data/links.js";
     <div class="hidden md:flex space-x-6">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="hover:text-blue-700">
+          <a href={link.href} class="hover:text-blue-700 md:text-xl">
             {link.text}
           </a>
         ))
@@ -25,7 +27,7 @@ import { navLinks } from "../data/links.js";
     <!-- Hamburger button for mobile -->
     <button id="menu-button" class="md:hidden flex items-center">
       <svg
-        class="w-6 h-6"
+        class="w-10 h-10"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -47,11 +49,33 @@ import { navLinks } from "../data/links.js";
     <nav class="flex flex-col space-y-2 py-6 items-center justify-center">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="hover:text-blue-600 ">
-            {link.text}
+          <a href={link.href} class="hover:text-blue-600 text-4xl">
+            <span class="my-4 flex">{link.text}</span>
           </a>
         ))
       }
+      <div class="flex">
+        <div class="m-10 w-15">
+          <a
+            target="_blank"
+            rel="noopener"
+            href=""
+            class="hover:scale-125 hover:opacity-75 transition inline-block"
+          >
+            <IconLinkedin />
+          </a>
+        </div>
+        <div class="m-10 w-15">
+          <a
+            target="_blank"
+            rel="noopener"
+            href=""
+            class="hover:scale-125 hover:opacity-75 transition inline-block"
+          >
+            <IconMedium />
+          </a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>

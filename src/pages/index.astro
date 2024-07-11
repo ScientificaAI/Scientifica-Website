@@ -23,3 +23,25 @@ import Layout from "../layouts/Layout.astro";
     line-height: 1.6;
   }
 </style>
+
+<script>
+  let valueDisplays = document.querySelectorAll(".num");
+  let interval = 3000;
+
+  valueDisplays.forEach((value) => {
+    if (value !== null) {
+      let startValue = 0;
+      let endValue = parseInt(
+        value.getAttribute("data-val")!.replace(/\D/g, "")
+      );
+      let duration = Math.floor(interval / endValue);
+      let counter = setInterval(function () {
+        startValue += 1;
+        value.textContent = startValue.toString();
+        if (startValue == endValue) {
+          clearInterval(counter);
+        }
+      }, duration);
+    }
+  });
+</script>
