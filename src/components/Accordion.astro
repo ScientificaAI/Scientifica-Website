@@ -34,8 +34,8 @@ const { title, body } = Astro.props;
     background-color: white;
     width: 100%;
     padding: 20px;
-    border: 1px solid wheat;
-    border-radius: 10px;
+    border-bottom: 1.6px solid rgb(224, 224, 224);
+
     transition: 0.5s;
     margin-bottom: 10px;
     cursor: pointer;
@@ -54,38 +54,37 @@ const { title, body } = Astro.props;
   .item .title .dropdown {
     width: max-content;
     font-size: x-large;
-    transform: rotate(270deg);
+    transform: rotate(360deg);
     transition: 0.5s;
   }
 
   .item .contain {
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .item.active {
-    background-color: gray;
     cursor: auto;
   }
 
   .item.active .title .text {
     font-weight: bold;
-    color: white;
   }
 
   .item.active .title .dropdown {
-    transform: rotate(-180deg);
+    transform: rotate(-90deg);
   }
 
   .item.active .contain {
     max-height: 500px;
-    color: white;
+    color: gray;
   }
 
   .item ul {
     list-style-type: disc;
     padding-left: 20px;
+    padding-top: 10px;
   }
 
   .item ul li {

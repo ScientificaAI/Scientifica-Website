@@ -12,7 +12,7 @@ interface Props {
 const { title, card } = Astro.props;
 ---
 
-<article>
+<article class="mt-16 flex flex-col">
   <div
     class="flex items-center text-center justify-center text-4xl font-bold md:mt-10 ml-4"
   >
@@ -20,25 +20,18 @@ const { title, card } = Astro.props;
   </div>
 
   <div
-    class="md:grid md:grid-cols-3 place-items-center md:ml-20 md:mr-20 md:mt-10 pb-20"
+    class="md:grid md:grid-cols-3 place-items-center gap-y-4 my-10 md:px-32 mx-6 md:mx-0"
   >
     {
       card.map((item) => (
-        <div class="bg-white flex m-4 rounded-lg w-[29rem] h-[100px] md:w-[350px]">
-          <div class="flex justify-between m-6 space-x-8">
-            <div class="flex justify-between">
-              <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
-                <div class="flex">
-                  <item.logo />
-                </div>
-              </div>
-              <div class="flex flex-col ml-[40px]">
-                <div class="flex">
-                  <h2 class="font-bold text-xl">{item.title}</h2>
-                </div>
-              </div>
-            </div>
+        <div class="bg-white flex md:flex-col items-center md:items-start md:justify-around rounded-lg w-[29rem] h-[120px] md:w-[350px] p-4 mb-4">
+          <div class="flex items-center justify-center w-[48px] h-[48px] rounded-lg bg-blue-100">
+            <item.logo />
           </div>
+
+          <h2 class="font-semibold md:text-xl text-2xl md:mx-0 mx-10">
+            {item.title}
+          </h2>
         </div>
       ))
     }

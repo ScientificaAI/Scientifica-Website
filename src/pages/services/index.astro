@@ -27,8 +27,8 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!--Render cards -->
-    <section class="md:m-10 md:p-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch">
+    <section class="m-6 md:p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-7">
         {card3.map((card) => <Card3 {...card} />)}
       </div>
     </section>
@@ -39,20 +39,22 @@ import Layout from "../../layouts/Layout.astro";
         <h2>Our models</h2>
       </div>
 
-      <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
-        {list1.map((list) => <Accordion {...list} />)}
-      </div>
+      <div class="flex flex-col-reverse md:flex-col">
+        <div class="md:m-6 md:mx-20 md:p-2 m-4 p-6 bg-white rounded-xl">
+          {list1.map((list) => <Accordion {...list} />)}
+        </div>
 
-      <div class="md:m-auto m-6 pt-4 md:max-w-[1190px] md:mb-10">
-        <p class="text-xl text-center w-full">
-          By partnering with Scientifica.ai, you gain access to cutting-edge
-          technologies, scientific expertise, and a dedicated team that is
-          passionate about driving your success. We are committed to delivering
-          solutions that exceed your expectations, empower your business, and
-          enable you to thrive in today's fast-paced and competitive landscape.
-          Unlock the power of Scientifica and experience the difference for
-          yourself.
-        </p>
+        <div class="md:m-auto m-6 pt-4 md:max-w-[1190px] md:mb-10">
+          <p class="text-xl text-center w-full text-[#404040]">
+            By partnering with Scientifica.ai, you gain access to cutting-edge
+            technologies, scientific expertise, and a dedicated team that is
+            passionate about driving your success. We are committed to
+            delivering solutions that exceed your expectations, empower your
+            business, and enable you to thrive in today's fast-paced and
+            competitive landscape. Unlock the power of Scientifica and
+            experience the difference for yourself.
+          </p>
+        </div>
       </div>
 
       <div
