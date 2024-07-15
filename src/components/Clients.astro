@@ -3,67 +3,63 @@ import IconCompanies from "./IconCompanies.astro";
 import IconStartup from "./IconStartup.astro";
 ---
 
-<section class="flex flex-col items-center justify-center bg-[#000423]">
-  <div class="flex flex-col m-10">
-    <div class="text-center">
-      <h2 class="text-white my-10 font-extrabold text-6xl md:text-5xl">
-        Our clients
-      </h2>
-    </div>
+<section class="flex flex-col bg-[#000423] md:min-h-dvh md:px-10">
+  <div class="flex flex-col m-10 md:mx-0">
+    <h2
+      class="text-white text-center my-10 font-medium text-6xl md:text-4xl md:pt-0 md:my-10"
+    >
+      Our clients
+    </h2>
 
-    <div class="flex flex-col md:flex-row m-10">
+    <div class="flex flex-col md:flex-row md:mx-10">
       <div
-        class="mb-20 text-white hover:bg-white hover:text-blue-950 md:w-[50%] rounded-xl p-10"
+        class="text-white hover:bg-white hover:text-blue-950 rounded-xl p-10 mb-10 md:mb-0"
       >
         <div>
           <IconStartup />
         </div>
-        <div class="mt-4 mb-4">
-          <h3 class="md:text-4xl py-6 font-bold text-5xl">Startups</h3>
-        </div>
-        <div>
-          <p class="md:text-lg text-3xl">
-            cientifica invests in startups and offers unparalleled access to
-            cutting-edge science and technology that augment capabilities to
-            allow business scale faster, stronger, and safer. We have built a
-            network of experts including scientists, technical and executive
-            talent, top media, and marketing resources, as well as other
-            technology decision-makers, influencers, and key opinion leaders.
-            Scientifica uses its network as part of its commitment to helping
-            startups grow their business, so our operating teams provide
-            entrepreneurs with access to expertise and insights across the
-            entire spectrum of company building.
-          </p>
-        </div>
+
+        <h3 class="py-6 font-bold text-5xl md:text-2xl">Startups</h3>
+
+        <p class="text-4xl md:text-base">
+          Scientifica invests in startups and offers unparalleled access to
+          cutting-edge science and technology that augment capabilities to allow
+          business scale faster, stronger, and safer. We have built a network of
+          experts including scientists, technical and executive talent, top
+          media, and marketing resources, as well as other technology
+          decision-makers, influencers, and key opinion leaders. Scientifica
+          uses its network as part of its commitment to helping startups grow
+          their business, so our operating teams provide entrepreneurs with
+          access to expertise and insights across the entire spectrum of company
+          building.
+        </p>
       </div>
 
       <div
-        class="mb-10 md:ml-20 md:w-[50%] p-10 rounded-xl text-white hover:bg-white hover:text-blue-950"
+        class="md:ml-20 p-10 rounded-xl text-white hover:bg-white hover:text-blue-950"
       >
         <div>
           <IconCompanies />
         </div>
-        <div class="mt-4 mb-4">
-          <h3 class="md:text-4xl py-6 font-bold text-5xl">
-            Established companies
-          </h3>
-        </div>
-        <div>
-          <p class="md:text-lg text-3xl">
-            Scientifica launches and incubates advanced AI-First solutions in
-            partnership with established companies giving these organizations
-            unparalleled access to cutting-edge science and technology. Carry
-            out own exploration and build proprietary digital products in
-            conjunction with partners and clients. The result of this
-            exploration is the creation of digital products that adjust to the
-            needs of the market. The products are validated in the market to
-            understand that they have the possibility of generating income and
-            can grow organically. Scientifica works on the creation of
-            science-based products for different industries such as Financial &
-            Insurance, Health, Arts, Sports, Media, Real Estate, Oil & Gas,
-            Consumer, Agriculture, Mining, Aerospatiale, etc.
-          </p>
-        </div>
+
+        <h3 class="py-6 font-bold text-5xl md:text-2xl">
+          Established companies
+        </h3>
+
+        <p class="text-4xl md:text-base">
+          Scientifica launches and incubates advanced AI-First solutions in
+          partnership with established companies giving these organizations
+          unparalleled access to cutting-edge science and technology. Carry out
+          own exploration and build proprietary digital products in conjunction
+          with partners and clients. The result of this exploration is the
+          creation of digital products that adjust to the needs of the market.
+          The products are validated in the market to understand that they have
+          the possibility of generating income and can grow organically.
+          Scientifica works on the creation of science-based products for
+          different industries such as Financial & Insurance, Health, Arts,
+          Sports, Media, Real Estate, Oil & Gas, Consumer, Agriculture, Mining,
+          Aerospatiale, etc.
+        </p>
       </div>
     </div>
   </div>

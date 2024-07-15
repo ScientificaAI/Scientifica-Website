@@ -4,7 +4,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import "@fontsource/poppins";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -37,10 +36,19 @@ import Footer from "../components/Footer.astro";
   }
 
   html {
-    font-family: "Poppins", system-ui, sans-serif;
+    font-family: "Biotif", system-ui, sans-serif;
     background: #fff;
     background-size: 224px;
   }
+
+  @font-face {
+    font-family: "Biotif";
+    src: url("/font/biotif.otf") format("otf");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body {
     width: fit-content;
   }
