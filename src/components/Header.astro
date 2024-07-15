@@ -19,7 +19,7 @@ import IconMedium from "./IconMedium.astro";
       {
         navLinks.map((link) => (
           <a href={link.href} class="hover:text-[#0024ff] md:text-xl">
-            {link.text}
+            <span>{link.text}</span>
           </a>
         ))
       }

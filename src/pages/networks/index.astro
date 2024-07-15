@@ -1,23 +1,21 @@
 ---
 import IconFlag from "../../components/IconFlag.astro";
-import Vector from "../../components/Vector.astro";
 import ModalForm from "../../components/form/ModalForm.astro";
 import { list3 } from "../../data/list3";
 import Layout from "../../layouts/Layout.astro";
+import VectorNetwor from "../../components/VectorNetwor.astro";
 ---
 
 <Layout title="Networks page">
   <main>
     <!--Hero Services Page -->
-    <section id="primary">
-      <div class="hidden md:flex">
-        <Vector />
-      </div>
-      <div class="m-auto pb-4 md:pt-4">
-        <h1 class="text-8xl font-bold text-center">Join our Network</h1>
+    <section id="primary" class="min-h-96">
+      <VectorNetwor class="absolute w-full" />
+      <div class="m-auto pb-4 md:pt-20">
+        <h1 class="text-7xl font-bold text-center">Join our Network</h1>
       </div>
       <div class="m-auto max-w-[750px] pb-10">
-        <p class="text-xl font-extralight text-center">
+        <p class="text-xl font-light text-center">
           Scientifica's mission is to conduct innovative and cutting-edge
           research and development that drives scientific progress and creates
           practical digital solutions to real-world problems.
@@ -77,7 +75,7 @@ import Layout from "../../layouts/Layout.astro";
   <ModalForm />
 </Layout>
 
-<style>
+<!-- <style>
   #primary {
     background-image: url("/public/capa15.svg");
     min-height: 400px;
@@ -85,4 +83,4 @@ import Layout from "../../layouts/Layout.astro";
     background-position: center;
     background-size: cover;
   }
-</style>
+</style> -->

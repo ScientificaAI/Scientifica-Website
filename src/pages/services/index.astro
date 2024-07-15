@@ -2,24 +2,24 @@
 import Accordion from "../../components/Accordion.astro";
 import Card3 from "../../components/Card3.astro";
 import GridSection from "../../components/GridSection.astro";
-import Vector from "../../components/Vector.astro";
 import ModalForm from "../../components/form/ModalForm.astro";
 import { card3 } from "../../data/card3";
 import { card4 } from "../../data/card4";
 import { list1 } from "../../data/list1";
 import Layout from "../../layouts/Layout.astro";
+import VectorServices from "../../components/VectorServices.astro";
 ---
 
 <Layout title="services page">
   <main>
     <!--Hero Services Page -->
-    <section id="primary">
-      <Vector />
-      <div class="m-auto pb-4 pt-4">
-        <h1 class="text-8xl font-bold text-center">Services</h1>
+    <section id="primary" class="md:min-h-96">
+      <VectorServices class="absolute -z-10 w-full" />
+      <div class="m-auto pb-4 pt-20">
+        <h1 class="text-7xl font-bold text-center">Services</h1>
       </div>
       <div class="m-auto max-w-[850px]">
-        <p class="text-2xl font-light text-center w-full">
+        <p class="text-xl font-light text-center w-full">
           With science at our core, we're a powerhouse in utilizing science, and
           engineering practical solutions to lead you into the future.
         </p>
@@ -76,7 +76,7 @@ import Layout from "../../layouts/Layout.astro";
   </main>
 </Layout>
 
-<style>
+<!-- <style>
   #primary {
     background-image: url("/public/Capa11.svg");
     min-height: 400px;
@@ -84,4 +84,4 @@ import Layout from "../../layouts/Layout.astro";
     background-position: center;
     background-size: cover;
   }
-</style>
+</style> -->
