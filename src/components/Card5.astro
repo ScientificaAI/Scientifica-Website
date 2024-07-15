@@ -2,20 +2,42 @@
 import { card5 } from "../data/card5.js";
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:mx-10 mx-2">
   {
     card5.map((card) => (
-      <div class="flex-1 m-6 p-6 bg-white rounded-xl shadow-md">
+      <div class="scroll-reveal flex-1 bg-white rounded-xl shadow-md p-6">
         <div>
           <card.logo />
         </div>
-        <div class="text-2xl mb-6 font-semibold">
-          <h2>{card.title}</h2>
-        </div>
-        <div>
-          <p class="text-2xl text-gray-400 line-clamp-8">{card.body}</p>
-        </div>
+        <h3 class="text-2xl font-semibold my-6">{card.title}</h3>
+
+        <p>
+          <span>{card.body}</span>
+        </p>
       </div>
     ))
   }
 </div>
+
+<style>
+  .scroll-reveal span {
+    color: hsla(0, 0%, 11%, 0.2);
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-image: linear-gradient(90deg, black, black);
+    animation: scroll-reveal linear forwards;
+    animation-timeline: view();
+  }
+
+  .scroll-reveal p span {
+    animation-range-start: cover 22vh;
+    animation-range-end: contain 30vh;
+  }
+
+  @keyframes scroll-reveal {
+    to {
+      background-size: 100% 100%;
+    }
+  }
+</style>

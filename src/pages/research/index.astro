@@ -28,54 +28,59 @@ import Layout from "../../layouts/Layout.astro";
       </div>
     </section>
 
-    <section class="md:mt-20 mt-10 md:ml-10 md:mr-10">
-      <!-- <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
-        <h2>Grow business with knowledge-rich research</h2>
+    <section class="md:mt-20 mt-10 md:mx-20 md:my-10">
+      <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
+        <h2>Empowering Innovation through Tailored Research Services</h2>
       </div>
-      <div class="p-10 text-center text-xl font-light">
+      <p
+        class="md:p-10 p-4 text-[#404040] text-center md:text-xl text-2xl font-light"
+      >
         <span>
-          Truly valuable innovation is driven by data and newly acquired
-          knowledge -- and research is the key to acquiring both. At
-          Scientifica, our research services encompass your business R&D and
-          research needs. We design and conduct qualitative studies and
-          quantitative research to find answers to the most challenging
-          questions you have utilizing an array of sophisticated research
-          methodologies. Our R&D service provides you with the knowledge to make
-          critical business decisions and build new products with conviction and
-          sound information.
+          Our research services are tailored to the specific needs of our
+          clients, and we strive to deliver impactful results that drive
+          innovation and create value. By combining scientific rigor with
+          technological advancements, we enable organizations to unlock the
+          power of research and stay at the forefront of their industries.
         </span>
-      </div> -->
+      </p>
 
       <Card5 />
     </section>
 
-    <section class="bg-[#eeeded] pb-10">
-      <div class="flex items-center justify-center pt-10 text-4xl font-bold">
-        <h2>Our Research Services</h2>
-      </div>
-      <div class="p-10 text-center text-2xl font-light">
-        <span>
-          Scientifica offers a comprehensive range of research services that
-          combine cutting-edge scientific methodologies with advanced
-          technologies. Our research services are designed to provide valuable
-          insights, drive innovation, and address real-world challenges across
-          various industries. Here are some of the research services provided by
-          Scientifica.
-        </span>
+    <section class="bg-[#eeeded] md:px-20 py-12">
+      <div class="md:my-4 md:pb-4">
+        <div class="flex items-center justify-center text-4xl font-bold py-4">
+          <h2>Our Research Services</h2>
+        </div>
+
+        <div class="px-6 py-6 text-center">
+          <span class="md:text-lg text-2xl font-light text-[#404040]">
+            Scientifica offers a comprehensive range of research services that
+            combine cutting-edge scientific methodologies with advanced
+            technologies.
+            <br />
+            Our research services are designed to provide valuable insights, drive
+            innovation, and address real-world challenges across various industries.
+            <br />
+            Here are some of the research services provided by Scientifica.
+          </span>
+        </div>
       </div>
 
       <!--Accordion -->
 
-      <div class="md:ml-20 md:m-10 md:mr-20 md:p-6 m-4 p-6 bg-white rounded-xl">
+      <div class="mx-3 p-2 bg-white rounded-xl">
         {list2.map((list) => <Accordion2 {...list} />)}
       </div>
     </section>
 
-    <section>
-      <div class="flex items-center justify-center pt-10 text-4xl font-bold">
-        <h2 class="text-center">Our Command of research methods</h2>
+    <section class="md:mt-20 mt-6 md:mx-20 md:my-10">
+      <div class="flex items-center justify-center md:pt-10 text-4xl font-bold">
+        <h2 class="text-center">Our command of research methods</h2>
       </div>
-      <div class="flex items-center justify-center p-10 text-2xl font-light">
+      <div
+        class="flex items-center justify-center md:p-10 p-4 text-2xl font-light"
+      >
         <span class="text-center">
           We conduct our scientific research services for businesses with
           advanced knowledge of the following research methodologies and
@@ -83,22 +88,22 @@ import Layout from "../../layouts/Layout.astro";
         </span>
       </div>
 
-      <article class="md:m-10">
+      <article class="md:m-10 mx-8 my-12">
         <div
-          class="grid grid-cols-1 md:grid-cols-3 md:place-items-center md:m-2 m-6 p-6 bg-white rounded-xl shadow-md"
+          class="grid grid-cols-1 md:grid-cols-3 md:place-items-start md:px-20 bg-white rounded-xl border-[0.5px] border-slate-300 md:border-0 md:shadow-lg"
         >
-          <div class="md:m-6">
-            <ul>
+          <div class="md:m-2">
+            <ul class="text-[#737373]">
               {col1.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
           </div>
-          <div class="md:m-6">
-            <ul>
+          <div class="md:m-2">
+            <ul class="text-[#737373]">
               {col2.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
           </div>
-          <div class="md:m-6">
-            <ul>
+          <div class="md:m-2">
+            <ul class="text-[#737373]">
               {col3.map((raw) => <li class="m-6">{raw.title}</li>)}
             </ul>
           </div>

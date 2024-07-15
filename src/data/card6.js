@@ -6,10 +6,10 @@ import Bar5 from "../components/icons/Bar5.astro";
 import Bar6 from "../components/icons/Bar6.astro";
 
 export const card6 = [
-  { title: "Expert team", logo: Bar1 },
-  { title: "Advance Techniques", logo: Bar2 },
-  { title: "Cutting-Edge Methodologies", logo: Bar3 },
-  { title: "Collaborative Approach", logo: Bar4 },
-  { title: "Actionable Information", logo: Bar5 },
-  { title: "Reliable Decisions", logo: Bar6 },
+  { title: "Unmatched Expertise", logo: Bar1 },
+  { title: "Speed of Service", logo: Bar2 },
+  { title: "Proof of Concept", logo: Bar3 },
+  { title: "Inpeccable Reporting", logo: Bar4 },
+  { title: "Client Support", logo: Bar5 },
+  { title: "Streamlined Processes", logo: Bar6 },
 ];
