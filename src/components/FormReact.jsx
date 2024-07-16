@@ -34,9 +34,27 @@ const Formulario = () => {
         industries: "",
       },
     ],
+    lookingfor: {
+      desired_fields_of_work: "",
+      desired_equipment: "",
+      desired_technology_stack: "",
+      desired_industry: "",
+      desired_problem_to_solve: "",
+    },
   });
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleLookinforChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      lookinfor: {
+        ...formData.lookingfor,
+        [name]: value,
+      },
+    });
+  };
 
   const handleDeleteSection = (section) => {
     if (section === "studies") {
@@ -93,8 +111,15 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { first_name, last_name, email, country, studies, experiences } =
-      formData;
+    const {
+      first_name,
+      last_name,
+      email,
+      country,
+      studies,
+      experiences,
+      lookingfor,
+    } = formData;
 
     setIsSubmitting(true);
 
@@ -106,6 +131,7 @@ const Formulario = () => {
         country,
         studies,
         experiences,
+        lookingfor,
       });
 
       if (!result.error) {
@@ -127,6 +153,13 @@ const Formulario = () => {
               industries: "",
             },
           ],
+          lookingfor: {
+            desired_fields_of_work: "",
+            desired_equipment: "",
+            desired_technology_stack: "",
+            desired_industry: "",
+            desired_problem_to_solve: "",
+          },
         });
         setTimeout(() => {
           window.location.href = "/";
@@ -317,6 +350,7 @@ const Formulario = () => {
                   type="text"
                   id="problem_solved"
                   name="problem_solved"
+                  placeholder="Type a message here..."
                   value={experience.problem_solved}
                   onChange={(e) => handleChange(e, index, "experiences")}
                   rows={8}
@@ -342,6 +376,63 @@ const Formulario = () => {
             </div>
           </div>
         ))}
+
+        {/* What are you looking for? */}
+
+        <>
+          <div class="flex justify-between items-center pb-4 mb-4 mt-6 rounded-t border-b sm:mb-5 dark:border-gray-600">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              What are you looking for?
+            </h3>
+          </div>
+
+          <InputForm
+            name="desired_fields_of_work"
+            type="text"
+            value={formData.lookingfor.desired_fields_of_work}
+            onChange={handleLookinforChange}
+            placeholder=" "
+          />
+          <InputForm
+            name="desired_equipment"
+            type="text"
+            value={formData.lookingfor.desired_equipment}
+            onChange={handleLookinforChange}
+            placeholder=" "
+          />
+          <InputForm
+            name="desired_technology_stack"
+            type="text"
+            value={formData.lookingfor.desired_technology_stack}
+            onChange={handleLookinforChange}
+            placeholder=""
+          />
+          <InputForm
+            name="desired_industry"
+            type="text"
+            value={formData.lookingfor.desired_industry}
+            onChange={handleLookinforChange}
+            placeholder=" "
+          />
+
+          <div className="grid gap-4 mb-4 sm:grid-cols-1 relative">
+            <label
+              htmlFor="desired_problem_to_solve"
+              className="text-white font-extralight text-xs"
+            >
+              Desired problem to solve:
+            </label>
+            <textarea
+              rows={8}
+              id="desired_problem_to_solve"
+              name="desired_problem_to_solve"
+              value={formData.lookingfor.desired_problem_to_solve}
+              onChange={handleLookinforChange}
+              className="rounded-xl border-gray-400 p-4"
+              placeholder="Desired problem to solve"
+            ></textarea>
+          </div>
+        </>
 
         <button
           id="btn-action"
