@@ -36,6 +36,7 @@ const Formulario = () => {
     ], */
   });
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e, index, section) => {
     const { name, value } = e.target;
@@ -76,38 +77,37 @@ const Formulario = () => {
     e.preventDefault();
     const { first_name, last_name, email, country, studies } = formData;
 
-    const result = await supabase.from("clients").insert({
-      first_name,
-      last_name,
-      email,
-      country,
-      studies,
-    });
-    console.log(result);
+    setIsSubmitting(true);
 
-    if (!result) {
-      setMessage("Error al enviar los datos: " + error.message);
-    } else {
-      toast("Success");
-      setMessage("Datos enviados con éxito!");
-      setFormData({
-        first_name: "",
-        last_name: "",
-        email: "",
-        country: "",
-        studies: [{ degree: "", university: "", graduation: "" }],
-        /* experiences: [
-          {
-            research_fields: "",
-            university_affiliation: "",
-            fields_of_study: "",
-            problem_solved: "",
-            technology_stack_experience: "",
-            industries: "",
-          },
-        ], */
+    try {
+      const result = await supabase.from("clients").insert({
+        first_name,
+        last_name,
+        email,
+        country,
+        studies,
       });
-      window.location.href = "/";
+
+      if (!result.error) {
+        toast("Success");
+        setMessage("Datos enviados con éxito!");
+        setFormData({
+          first_name: "",
+          last_name: "",
+          email: "",
+          country: "",
+          studies: [{ degree: "", university: "", graduation: "" }],
+        });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      } else {
+        setMessage("Error al enviar los datos: " + result.error.message);
+      }
+    } catch (error) {
+      setMessage("Error al enviar los datos: " + error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -231,9 +231,10 @@ const Formulario = () => {
         )}
         <button
           type="submit"
+          disabled={isSubmitting}
           className="sm:col-span-2 py-2 px-4 bg-[#0024ff] text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
         >
-          Send
+          {isSubmitting ? "Sending..." : "Send"}
         </button>
       </form>
     </>
