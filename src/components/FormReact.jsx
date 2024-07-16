@@ -22,28 +22,65 @@ const Formulario = () => {
     last_name: "",
     email: "",
     country: "",
-    degree: "",
-    university: "",
+    studies: [{ degree: "", university: "", graduation: "" }],
+    /* experiences: [
+      {
+        research_fields: "",
+        university_affiliation: "",
+        fields_of_study: "",
+        problem_solved: "",
+        technology_stack_experience: "",
+        industries: "",
+      },
+    ], */
   });
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e, index, section) => {
     const { name, value } = e.target;
+    if (section) {
+      const updatedSection = [...formData[section]];
+      updatedSection[index][name] = value;
+      setFormData({
+        ...formData,
+        [section]: updatedSection,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleAddSection = (section) => {
+    const newSection =
+      section === "studies"
+        ? { degree: "", university: "", graduation: "" }
+        : {
+            research_fields: "",
+            university_affiliation: "",
+            fields_of_study: "",
+            problem_solved: "",
+            technology_stack_experience: "",
+            industries: "",
+          };
     setFormData({
       ...formData,
-      [name]: value,
+      [section]: [...formData[section], newSection],
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { first_name, last_name, email, country } = formData;
+    const { first_name, last_name, email, country, studies } = formData;
 
     const result = await supabase.from("clients").insert({
       first_name,
       last_name,
       email,
       country,
+      studies,
     });
 
     if (!result) {
@@ -55,9 +92,17 @@ const Formulario = () => {
         last_name: "",
         email: "",
         country: "",
-        degree: "",
-        university: "",
-        graduation: "",
+        studies: [{ degree: "", university: "", graduation: "" }],
+        /* experiences: [
+          {
+            research_fields: "",
+            university_affiliation: "",
+            fields_of_study: "",
+            problem_solved: "",
+            technology_stack_experience: "",
+            industries: "",
+          },
+        ], */
       });
     }
   };
@@ -100,43 +145,48 @@ const Formulario = () => {
       {/* Studies Information */}
 
       <>
-        <div class="pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-            Studies
-          </h3>
-        </div>
-        <div className="grid gap-4 mb-4 sm:grid-cols-2">
-          <InputForm
-            type="text"
-            name="degree"
-            value={formData.degree}
-            onChange={handleChange}
-            id="degree"
-            placeholder=" "
-            required
-          />
-          <InputForm
-            type="text"
-            name="university"
-            value={formData.university}
-            onChange={handleChange}
-            id="university"
-            placeholder=" "
-            required
-          />
-          <InputForm
-            type="text"
-            name="graduation"
-            value={formData.graduation}
-            onChange={handleChange}
-            id="graduation"
-            placeholder=" "
-            required
-          />
-        </div>
+        {formData.studies.map((study, index) => (
+          <div key={index} className="mb-10">
+            <div class="pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                Studies
+              </h3>
+            </div>
+            <div className="grid gap-4 mb-4 sm:grid-cols-2">
+              <InputForm
+                type="text"
+                name="degree"
+                value={formData.degree}
+                onChange={(e) => handleChange(e, index, "studies")}
+                id="degree"
+                placeholder=" "
+                required
+              />
+              <InputForm
+                type="text"
+                name="university"
+                value={formData.university}
+                onChange={(e) => handleChange(e, index, "studies")}
+                id="university"
+                placeholder=" "
+                required
+              />
+              <InputForm
+                type="text"
+                name="graduation"
+                value={formData.graduation}
+                onChange={(e) => handleChange(e, index, "studies")}
+                id="graduation"
+                placeholder=" "
+                required
+              />
+            </div>
+          </div>
+        ))}
 
         <button
           id="btn-action"
+          onClick={() => handleAddSection("studies")}
           type="button"
           class="text-blue-500 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
         >
