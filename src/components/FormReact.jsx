@@ -386,34 +386,36 @@ const Formulario = () => {
             </h3>
           </div>
 
-          <InputForm
-            name="desired_fields_of_work"
-            type="text"
-            value={formData.lookingfor.desired_fields_of_work}
-            onChange={handleLookinforChange}
-            placeholder=" "
-          />
-          <InputForm
-            name="desired_equipment"
-            type="text"
-            value={formData.lookingfor.desired_equipment}
-            onChange={handleLookinforChange}
-            placeholder=" "
-          />
-          <InputForm
-            name="desired_technology_stack"
-            type="text"
-            value={formData.lookingfor.desired_technology_stack}
-            onChange={handleLookinforChange}
-            placeholder=""
-          />
-          <InputForm
-            name="desired_industry"
-            type="text"
-            value={formData.lookingfor.desired_industry}
-            onChange={handleLookinforChange}
-            placeholder=" "
-          />
+          <div className="grid gap-4 mb-4 sm:grid-cols-1">
+            <InputForm
+              name="desired_fields_of_work"
+              type="text"
+              value={formData.lookingfor.desired_fields_of_work}
+              onChange={handleLookinforChange}
+              placeholder=" "
+            />
+            <InputForm
+              name="desired_equipment"
+              type="text"
+              value={formData.lookingfor.desired_equipment}
+              onChange={handleLookinforChange}
+              placeholder=" "
+            />
+            <InputForm
+              name="desired_technology_stack"
+              type="text"
+              value={formData.lookingfor.desired_technology_stack}
+              onChange={handleLookinforChange}
+              placeholder=""
+            />
+            <InputForm
+              name="desired_industry"
+              type="text"
+              value={formData.lookingfor.desired_industry}
+              onChange={handleLookinforChange}
+              placeholder=" "
+            />
+          </div>
 
           <div className="grid gap-4 mb-4 sm:grid-cols-1 relative">
             <label
