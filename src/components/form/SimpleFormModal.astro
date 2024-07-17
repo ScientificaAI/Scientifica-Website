@@ -1,12 +1,12 @@
 ---
 //import Form from "./Form.astro";
 import HeaderModal from "./HeaderModal.astro";
-import Formulario from "../FormReact";
+import SimpleForm from "./SimpleForm";
 ---
 
 <!-- Main modal -->
 <div
-  id="modal"
+  id="modal2"
   tabindex="-1"
   aria-hidden="true"
   class="hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 overflow-y-auto animate-slide-out-top"
@@ -20,7 +20,8 @@ import Formulario from "../FormReact";
       <HeaderModal />
 
       <!-- Modal body -->
-      <Formulario client:load />
+
+      <SimpleForm client:load />
     </div>
   </div>
 </div>
@@ -28,8 +29,8 @@ import Formulario from "../FormReact";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("modal");
-    const openModalButton = document.querySelectorAll(".btn-modal");
+    const modal = document.getElementById("modal2");
+    const openModalButton = document.querySelectorAll(".btn-modal2");
     const overlay = document.getElementById("overlay");
     const closeModalButton = modal!.querySelector(
       '[data-modal-toggle="modal"]'
