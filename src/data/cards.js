@@ -6,6 +6,6 @@ import IconWorld from "../components/IconWorld.astro";
 export const cards = [
   { title: "200", body: "Happy clients", logo: IconPeople },
   { title: "100", body: "Models developed", logo: IconCross },
-  { title: "300", body: "Products build", logo: IconWork },
-  { title: "15", body: "Countries served", logo: IconWorld },
+  { title: "50", body: "Products build", logo: IconWork },
+  { title: "35", body: "Countries served", logo: IconWorld },
 ];
