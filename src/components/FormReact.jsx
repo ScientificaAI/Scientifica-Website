@@ -49,7 +49,7 @@ const Formulario = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      lookinfor: {
+      lookingfor: {
         ...formData.lookingfor,
         [name]: value,
       },
