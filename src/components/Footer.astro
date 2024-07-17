@@ -20,7 +20,10 @@ import IconMedium from "./IconMedium.astro";
       >
         {
           navLinks.map((link) => (
-            <a href={link.href} class="hover:text-blue-600 md:text-xl text-2xl">
+            <a
+              href={link.href}
+              class="hover:text-[#0024ff] md:text-xl text-2xl"
+            >
               {link.text}
             </a>
           ))
@@ -53,8 +56,13 @@ import IconMedium from "./IconMedium.astro";
       </div>
     </div>
 
-    <div>© 2024 Scientifica AI</div>
-
-    <div></div>
+    <div class="flex justify-between w-full px-20">
+      <div>
+        <a href="/privacy-policy" class="text-[#0024ff] text-sm cursor-pointer"
+          >Privacy Policy</a
+        >
+      </div>
+      <div><span class="text-[#737373]">© 2024 Scientifica AI</span></div>
+    </div>
   </div>
 </footer>
