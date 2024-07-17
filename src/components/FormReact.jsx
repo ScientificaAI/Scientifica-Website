@@ -342,7 +342,7 @@ const Formulario = () => {
               <div class="grid gap-4 mb-4 sm:grid-cols-1 relative">
                 <label
                   for="underline_select"
-                  class="text-white font-extralight text-xs"
+                  class="text-black font-extralight text-xs"
                 >
                   Problem Solved:
                 </label>
@@ -376,6 +376,26 @@ const Formulario = () => {
             </div>
           </div>
         ))}
+        <button
+          id="btn-action"
+          onClick={() => handleAddSection("experiences")}
+          type="button"
+          class="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          Add experience
+        </button>
 
         {/* What are you looking for? */}
 
@@ -420,7 +440,7 @@ const Formulario = () => {
           <div className="grid gap-4 mb-4 sm:grid-cols-1 relative">
             <label
               htmlFor="desired_problem_to_solve"
-              className="text-white font-extralight text-xs"
+              className="text-black font-extralight text-xs"
             >
               Desired problem to solve:
             </label>
@@ -435,27 +455,6 @@ const Formulario = () => {
             ></textarea>
           </div>
         </>
-
-        <button
-          id="btn-action"
-          onClick={() => handleAddSection("experiences")}
-          type="button"
-          class="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-          Add experience
-        </button>
 
         {message && (
           <div className="sm:col-span-2 text-center text-green-600">
