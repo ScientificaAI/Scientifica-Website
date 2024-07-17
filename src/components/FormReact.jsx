@@ -506,7 +506,7 @@ const Formulario = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`sm:col-span-2 py-2 px-4 bg-[#0024ff] text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 ${
+          className={`sm:col-span-2 py-2 px-4 bg-[#0024ff] md:w-fit text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 ${
             isSubmitting ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
