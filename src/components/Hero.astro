@@ -32,7 +32,7 @@ import ModalForm from "./form/ModalForm.astro";
       >
         <button
           id="btn-modal2"
-          class="btn-modal2 text-white text-4xl md:text-xl font-semibold rounded-lg py-2 px-4"
+          class="btn-modal2 text-white text-4xl md:text-xl font-semibold rounded-lg py-2 px-4 w-full"
         >
           Start a conversation
         </button>
@@ -51,9 +51,16 @@ import ModalForm from "./form/ModalForm.astro";
 <ModalForm />
 
 <style>
-  @media (max-width: 767px) {
-    .text-combined {
-      display: inline;
-    }
+  @font-face {
+    font-family: "Biotif";
+    src: url("/font/biotif.otf") format("otf");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  h1,
+  h1 > span {
+    font-family: "Biotif", system-ui, sans-serif;
   }
 </style>

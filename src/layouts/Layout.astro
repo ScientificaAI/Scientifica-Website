@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import "@fontsource-variable/manrope";
 ---
 
 <!doctype html>
@@ -36,17 +37,9 @@ import Footer from "../components/Footer.astro";
   }
 
   html {
-    font-family: "Biotif", system-ui, sans-serif;
+    font-family: "Manrope", system-ui, sans-serif;
     background: #fff;
     background-size: 224px;
-  }
-
-  @font-face {
-    font-family: "Biotif";
-    src: url("/font/biotif.otf") format("otf");
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
   }
 
   body {
