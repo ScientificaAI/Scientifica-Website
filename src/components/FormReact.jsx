@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Toaster, toast } from "sonner";
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
@@ -10,53 +10,96 @@ export const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxZGNxd25pYmRzbmlqdGJnYWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTgyODMsImV4cCI6MjAzNTA3NDI4M30.s15-GrZmSAUQgXtFCG235m1mtX-9zgUBP1iatghNKQk"
 );
 
-const options = [
-  // Norteamérica
-  { value: "US", label: "United States" },
-  { value: "CA", label: "Canada" },
-  { value: "MX", label: "Mexico" },
+const inputsPersonalInfo = [
+  {
+    id: 1,
+    name: "first_name",
+    type: "first_name",
+    placeholder: " ",
+    errorMessage:
+      "First name should be 3-16 characters and shouldn't include any special character!",
+    label: "first name",
+    pattern: "^[A-Za-z0-9]{3,16}$",
+    required: true,
+  },
+  {
+    id: 2,
+    name: "last_name",
+    type: "last_name",
+    placeholder: " ",
+    errorMessage:
+      "Last name should be 3-16 characters and shouldn't include any special character!",
+    label: "Last Name",
+    pattern: "^[A-Za-z0-9]{3,16}$",
+    required: true,
+  },
+  {
+    id: 3,
+    name: "email",
+    type: "text",
+    placeholder: " ",
+    label: "Email",
+    errorMessage: "It should be a valid email address!",
+    pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    required: true,
+  },
+  {
+    ext: true,
+    id: 4,
+    name: "country",
+    type: "text",
+    placeholder: " ",
+    label: "Country",
+    required: true,
+    options: [
+      // Norteamérica
+      { value: "US", label: "United States" },
+      { value: "CA", label: "Canada" },
+      { value: "MX", label: "Mexico" },
 
-  // América Central y el Caribe
-  { value: "CR", label: "Costa Rica" },
-  { value: "SV", label: "El Salvador" },
-  { value: "GT", label: "Guatemala" },
-  { value: "HN", label: "Honduras" },
-  { value: "NI", label: "Nicaragua" },
-  { value: "PA", label: "Panama" },
-  { value: "CU", label: "Cuba" },
-  { value: "DO", label: "Dominican Republic" },
-  { value: "HT", label: "Haiti" },
-  { value: "JM", label: "Jamaica" },
-  { value: "TT", label: "Trinidad and Tobago" },
+      // América Central y el Caribe
+      { value: "CR", label: "Costa Rica" },
+      { value: "SV", label: "El Salvador" },
+      { value: "GT", label: "Guatemala" },
+      { value: "HN", label: "Honduras" },
+      { value: "NI", label: "Nicaragua" },
+      { value: "PA", label: "Panama" },
+      { value: "CU", label: "Cuba" },
+      { value: "DO", label: "Dominican Republic" },
+      { value: "HT", label: "Haiti" },
+      { value: "JM", label: "Jamaica" },
+      { value: "TT", label: "Trinidad and Tobago" },
 
-  // América del Sur
-  { value: "AR", label: "Argentina" },
-  { value: "BO", label: "Bolivia" },
-  { value: "BR", label: "Brazil" },
-  { value: "CL", label: "Chile" },
-  { value: "CO", label: "Colombia" },
-  { value: "EC", label: "Ecuador" },
-  { value: "GY", label: "Guyana" },
-  { value: "PY", label: "Paraguay" },
-  { value: "PE", label: "Peru" },
-  { value: "SR", label: "Suriname" },
-  { value: "UY", label: "Uruguay" },
-  { value: "VE", label: "Venezuela" },
+      // América del Sur
+      { value: "AR", label: "Argentina" },
+      { value: "BO", label: "Bolivia" },
+      { value: "BR", label: "Brazil" },
+      { value: "CL", label: "Chile" },
+      { value: "CO", label: "Colombia" },
+      { value: "EC", label: "Ecuador" },
+      { value: "GY", label: "Guyana" },
+      { value: "PY", label: "Paraguay" },
+      { value: "PE", label: "Peru" },
+      { value: "SR", label: "Suriname" },
+      { value: "UY", label: "Uruguay" },
+      { value: "VE", label: "Venezuela" },
 
-  // Países principales del Caribe
-  { value: "BS", label: "Bahamas" },
-  { value: "BB", label: "Barbados" },
-  { value: "BZ", label: "Belize" },
-  { value: "GD", label: "Grenada" },
-  { value: "LC", label: "Saint Lucia" },
-  { value: "VC", label: "Saint Vincent and the Grenadines" },
+      // Países principales del Caribe
+      { value: "BS", label: "Bahamas" },
+      { value: "BB", label: "Barbados" },
+      { value: "BZ", label: "Belize" },
+      { value: "GD", label: "Grenada" },
+      { value: "LC", label: "Saint Lucia" },
+      { value: "VC", label: "Saint Vincent and the Grenadines" },
 
-  // Europa (países principales)
-  { value: "FR", label: "France" },
-  { value: "DE", label: "Germany" },
-  { value: "IT", label: "Italy" },
-  { value: "ES", label: "Spain" },
-  { value: "UK", label: "United Kingdom" },
+      // Europa (países principales)
+      { value: "FR", label: "France" },
+      { value: "DE", label: "Germany" },
+      { value: "IT", label: "Italy" },
+      { value: "ES", label: "Spain" },
+      { value: "UK", label: "United Kingdom" },
+    ],
+  },
 ];
 
 const Formulario = () => {
@@ -86,6 +129,7 @@ const Formulario = () => {
   });
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef(null);
 
   const handleLookinforChange = (e) => {
     const { name, value } = e.target;
@@ -153,20 +197,10 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {
-      first_name,
-      last_name,
-      email,
-      country,
-      studies,
-      experiences,
-      lookingfor,
-    } = formData;
+    const form = formRef.current;
 
-    setIsSubmitting(true);
-
-    try {
-      const result = await supabase.from("clients").insert({
+    if (form.checkValidity()) {
+      const {
         first_name,
         last_name,
         email,
@@ -174,83 +208,96 @@ const Formulario = () => {
         studies,
         experiences,
         lookingfor,
-      });
+      } = formData;
 
-      if (!result.error) {
-        toast("Success");
-        setMessage("Datos enviados con éxito!");
-        setFormData({
-          first_name: "",
-          last_name: "",
-          email: "",
-          country: "",
-          studies: [{ degree: "", university: "", graduation: "" }],
-          experiences: [
-            {
-              research_fields: "",
-              university_affiliation: "",
-              fields_of_study: "",
-              problem_solved: "",
-              technology_stack_experience: "",
-              industries: "",
-            },
-          ],
-          lookingfor: {
-            desired_fields_of_work: "",
-            desired_equipment: "",
-            desired_technology_stack: "",
-            desired_industry: "",
-            desired_problem_to_solve: "",
-          },
+      try {
+        setIsSubmitting(true);
+        const result = await supabase.from("clients").insert({
+          first_name,
+          last_name,
+          email,
+          country,
+          studies,
+          experiences,
+          lookingfor,
         });
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
-      } else {
-        setMessage("Error al enviar los datos: " + result.error.message);
+
+        if (!result.error) {
+          toast("Success");
+          setMessage("Data sent successfully!");
+          setFormData({
+            first_name: "",
+            last_name: "",
+            email: "",
+            country: "",
+            studies: [{ degree: "", university: "", graduation: "" }],
+            experiences: [
+              {
+                research_fields: "",
+                university_affiliation: "",
+                fields_of_study: "",
+                problem_solved: "",
+                technology_stack_experience: "",
+                industries: "",
+              },
+            ],
+            lookingfor: {
+              desired_fields_of_work: "",
+              desired_equipment: "",
+              desired_technology_stack: "",
+              desired_industry: "",
+              desired_problem_to_solve: "",
+            },
+          });
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
+        } else {
+          setMessage("Error sending data: " + result.error.message);
+        }
+      } catch (error) {
+        setMessage("Error sending data: " + error.message);
+      } finally {
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      setMessage("Error al enviar los datos: " + error.message);
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setMessage("Please fill out all fields correctly.");
+      form.reportValidity();
     }
   };
 
   return (
     <>
       <Toaster />
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
         {/* Personal Information */}
         <div className="grid gap-4 mb-4 sm:grid-cols-2">
-          <InputForm
-            name="first_name"
-            type="text"
-            value={formData.first_name}
-            onChange={handleChange}
-            placeholder=" "
-          />
-          <InputForm
-            name="last_name"
-            type="text"
-            value={formData.last_name}
-            onChange={handleChange}
-            placeholder=" "
-          />
-          <InputForm
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder=" "
-          />
-          <SelectForm
-            label="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            placeholder={"country"}
-            options={options}
-          />
+          {inputsPersonalInfo.map((input) => (
+            <div key={input.id}>
+              {input.ext ? (
+                <SelectForm
+                  name={input.name}
+                  value={formData[input.name]}
+                  onChange={handleChange}
+                  options={input.options}
+                  label={input.label}
+                  required={input.required}
+                />
+              ) : (
+                <InputForm
+                  type={input.type}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  value={formData[input.name]}
+                  label={input.label}
+                  onChange={handleChange}
+                  errorMessage={input.errorMessage}
+                  pattern={input.pattern}
+                  required={input.required}
+                />
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Studies Information */}
