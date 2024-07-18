@@ -298,7 +298,7 @@ const Formulario = () => {
                   required
                 />
                 <InputForm
-                  type="text"
+                  type="date"
                   name="graduation"
                   value={formData.graduation}
                   onChange={(e) => handleChange(e, index, "studies")}
