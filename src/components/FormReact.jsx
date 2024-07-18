@@ -310,26 +310,30 @@ const Formulario = () => {
             </div>
           ))}
 
-          <button
-            id="btn-action"
-            onClick={() => handleAddSection("studies")}
-            type="button"
-            class="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            Add studies
-          </button>
+          <>
+            {formData.studies.length <= 1 && (
+              <button
+                id="btn-action"
+                onClick={() => handleAddSection("studies")}
+                type="button"
+                className="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                Add studies
+              </button>
+            )}
+          </>
         </>
 
         {/* Experience Information */}
@@ -418,26 +422,29 @@ const Formulario = () => {
             </div>
           </div>
         ))}
-        <button
-          id="btn-action"
-          onClick={() => handleAddSection("experiences")}
-          type="button"
-          class="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+
+        {formData.experiences.length <= 1 && (
+          <button
+            id="btn-action"
+            onClick={() => handleAddSection("experiences")}
+            type="button"
+            class="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
           >
-            <path
-              fill-rule="evenodd"
-              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-          Add experience
-        </button>
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Add experience
+          </button>
+        )}
 
         {/* What are you looking for? */}
 
