@@ -149,7 +149,7 @@ const SimpleForm = () => {
 
         if (!result.error) {
           toast("Success");
-          setMessage("Datos enviados con éxito!");
+          setMessage("Data sent successfully!");
           setFormData({
             first_name: "",
             last_name: "",
@@ -161,15 +161,15 @@ const SimpleForm = () => {
             window.location.href = "/";
           }, 2000);
         } else {
-          setMessage("Error al enviar los datos: " + result.error.message);
+          setMessage("Error sending data: " + result.error.message);
         }
       } catch (error) {
-        setMessage("Error al enviar los datos: " + error.message);
+        setMessage("Error sending data: " + error.message);
       } finally {
         setIsSubmitting(false);
       }
     } else {
-      setMessage("Por favor, completa todos los campos correctamente.");
+      setMessage("Please fill out all fields correctly.");
       form.reportValidity();
     }
   };
