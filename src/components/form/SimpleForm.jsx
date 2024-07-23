@@ -29,7 +29,7 @@ const inputs = [
     errorMessage:
       "First name should be 3-16 characters and shouldn't include any special character!",
     label: "first name",
-    pattern: "^[A-Za-z0-9]{3,16}$",
+    pattern: "^[A-Za-z0-9 ]{3,16}$",
     required: true,
   },
   {
@@ -40,7 +40,7 @@ const inputs = [
     errorMessage:
       "Last name should be 3-16 characters and shouldn't include any special character!",
     label: "Last Name",
-    pattern: "^[A-Za-z0-9]{3,16}$",
+    pattern: "^[A-Za-z0-9 ]{3,16}$",
     required: true,
   },
   {
