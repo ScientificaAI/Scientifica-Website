@@ -10,11 +10,43 @@ export const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxZGNxd25pYmRzbmlqdGJnYWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTgyODMsImV4cCI6MjAzNTA3NDI4M30.s15-GrZmSAUQgXtFCG235m1mtX-9zgUBP1iatghNKQk"
 );
 
+const studiesInputs = [
+  {
+    id: 1,
+    name: "degree",
+    type: "text",
+    placeholder: " ",
+    label: "Degree",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    pattern: "^[A-Za-z]{1,16}$",
+    required: true,
+  },
+  {
+    id: 2,
+    name: "university",
+    type: "text",
+    placeholder: " ",
+    label: "University",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    pattern: "^[A-Za-z]{1,16}$",
+    required: true,
+  },
+  {
+    id: 3,
+    name: "graduation",
+    type: "date",
+    placeholder: " ",
+    label: "Graduation Date",
+    errorMessage: "Must be a valid date in the format 10/10/1992!",
+    required: true,
+  },
+];
+
 const inputsPersonalInfo = [
   {
     id: 1,
     name: "first_name",
-    type: "first_name",
+    type: "text",
     placeholder: " ",
     errorMessage:
       "First name should be 3-16 characters and shouldn't include any special character!",
@@ -25,7 +57,7 @@ const inputsPersonalInfo = [
   {
     id: 2,
     name: "last_name",
-    type: "last_name",
+    type: "text",
     placeholder: " ",
     errorMessage:
       "Last name should be 3-16 characters and shouldn't include any special character!",
@@ -325,34 +357,26 @@ const Formulario = () => {
                   </svg>
                 </button>
               </div>
-              <div className="grid gap-4  sm:grid-cols-2">
-                <InputForm
-                  type="text"
-                  name="degree"
-                  value={formData.degree}
-                  onChange={(e) => handleChange(e, index, "studies")}
-                  id="degree"
-                  placeholder=" "
-                  required
-                />
-                <InputForm
-                  type="text"
-                  name="university"
-                  value={formData.university}
-                  onChange={(e) => handleChange(e, index, "studies")}
-                  id="university"
-                  placeholder=" "
-                  required
-                />
-                <InputForm
-                  type="date"
-                  name="graduation"
-                  value={formData.graduation}
-                  onChange={(e) => handleChange(e, index, "studies")}
-                  id="graduation"
-                  placeholder=" "
-                  required
-                />
+
+              <div className="grid gap-4  sm:grid-cols-1">
+                {formData.studies.map((study, index) => (
+                  <div className="w-full" key={index}>
+                    {studiesInputs.map((input) => (
+                      <InputForm
+                        key={input.id}
+                        type={input.type}
+                        name={input.name}
+                        value={study[input.name]}
+                        onChange={(e) => handleChange(e, index, "studies")}
+                        id={input.name}
+                        placeholder={input.placeholder}
+                        required={input.required}
+                        pattern={input.pattern}
+                        errorMessage={input.errorMessage}
+                      />
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
