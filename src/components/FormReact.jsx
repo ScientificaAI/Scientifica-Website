@@ -10,6 +10,94 @@ export const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxZGNxd25pYmRzbmlqdGJnYWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTgyODMsImV4cCI6MjAzNTA3NDI4M30.s15-GrZmSAUQgXtFCG235m1mtX-9zgUBP1iatghNKQk"
 );
 
+export const TextAreaForm = ({
+  name,
+  value,
+  onChange,
+  placeholder,
+  required,
+  pattern,
+}) => {
+  return (
+    <div className="mb-4">
+      <textarea
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full px-3 py-2 text-base leading-6 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        rows="4"
+        required={required}
+        pattern={pattern}
+      />
+    </div>
+  );
+};
+
+const experiencesInputs = [
+  {
+    id: 1,
+    name: "research_fields",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    label: "Research Fields",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+  {
+    id: 2,
+    name: "university_affiliation",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    label: "University Affiliation",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+  {
+    id: 3,
+    name: "fields_of_study",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    label: "Fields of Study",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+  {
+    id: 4,
+    name: "problem_solved",
+    type: "text",
+    placeholder: "Problem Solved",
+
+    label: "Problem Solved",
+    required: true,
+    isTextArea: true,
+    pattern: "^[A-Za-z ]{1,200}$",
+  },
+  {
+    id: 5,
+    name: "technology_stack_experience",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    label: "Technology Stack Experience",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+  {
+    id: 6,
+    name: "industries",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Must be 16 characters or less and only letters!",
+    label: "Industries",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+];
+
 const studiesInputs = [
   {
     id: 1,
@@ -18,7 +106,7 @@ const studiesInputs = [
     placeholder: " ",
     label: "Degree",
     errorMessage: "Must be 16 characters or less and only letters!",
-    pattern: "^[A-Za-z]{1,16}$",
+    pattern: "^[A-Za-z ]{1,16}$",
     required: true,
   },
   {
@@ -28,7 +116,7 @@ const studiesInputs = [
     placeholder: " ",
     label: "University",
     errorMessage: "Must be 16 characters or less and only letters!",
-    pattern: "^[A-Za-z]{1,16}$",
+    pattern: "^[A-Za-z ]{1,16}$",
     required: true,
   },
   {
@@ -51,7 +139,7 @@ const inputsPersonalInfo = [
     errorMessage:
       "First name should be 3-16 characters and shouldn't include any special character!",
     label: "first name",
-    pattern: "^[A-Za-z0-9]{3,16}$",
+    pattern: "^[A-Za-z ]{1,16}$",
     required: true,
   },
   {
@@ -62,7 +150,7 @@ const inputsPersonalInfo = [
     errorMessage:
       "Last name should be 3-16 characters and shouldn't include any special character!",
     label: "Last Name",
-    pattern: "^[A-Za-z0-9]{3,16}$",
+    pattern: "^[A-Za-z0-9 ]{3,16}$",
     required: true,
   },
   {
@@ -434,62 +522,36 @@ const Formulario = () => {
             </div>
 
             <div className="grid gap-4 mb-4 sm:grid-cols-1">
-              <InputForm
-                type="text"
-                id="research_fields"
-                name="research_fields"
-                value={experience.research_fields}
-                onChange={(e) => handleChange(e, index, "experiences")}
-              />
-              <InputForm
-                type="text"
-                id="university_affiliation"
-                name="university_affiliation"
-                value={experience.university_affiliation}
-                onChange={(e) => handleChange(e, index, "experiences")}
-              />
-              <InputForm
-                type="text"
-                id="fields_of_study"
-                name="fields_of_study"
-                value={experience.fields_of_study}
-                onChange={(e) => handleChange(e, index, "experiences")}
-              />
-
-              <div class="grid gap-4 mb-4 sm:grid-cols-1 relative">
-                <label
-                  for="underline_select"
-                  class="text-black font-extralight text-xs"
-                >
-                  Problem Solved:
-                </label>
-                <textarea
-                  type="text"
-                  id="problem_solved"
-                  name="problem_solved"
-                  placeholder="Type a message here..."
-                  value={experience.problem_solved}
-                  onChange={(e) => handleChange(e, index, "experiences")}
-                  rows={8}
-                  class="rounded-xl p-4 border-gray-400"
-                ></textarea>
-              </div>
-
-              <InputForm
-                type="text"
-                id="technology_stack_experience"
-                name="technology_stack_experience"
-                value={experience.technology_stack_experience}
-                onChange={(e) => handleChange(e, index, "experiences")}
-              />
-
-              <InputForm
-                type="text"
-                id="industries"
-                name="industries"
-                value={experience.industries}
-                onChange={(e) => handleChange(e, index, "experiences")}
-              />
+              {formData.experiences.map((experience, index) => (
+                <div key={index}>
+                  {experiencesInputs.map((input) =>
+                    input.isTextArea ? (
+                      <TextAreaForm
+                        key={input.id}
+                        name={input.name}
+                        value={experience[input.name]}
+                        onChange={(e) => handleChange(e, index, "experiences")}
+                        placeholder={input.placeholder}
+                        required={input.required}
+                        pattern={input.pattern}
+                      />
+                    ) : (
+                      <InputForm
+                        key={input.id}
+                        type={input.type}
+                        name={input.name}
+                        value={experience[input.name]}
+                        onChange={(e) => handleChange(e, index, "experiences")}
+                        id={input.name}
+                        placeholder={input.placeholder}
+                        required={input.required}
+                        pattern={input.pattern}
+                        errorMessage={input.errorMessage}
+                      />
+                    )
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         ))}
