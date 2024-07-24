@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Toaster, toast } from "sonner";
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
+import { useAWSWAFCaptchaFetch } from "../aws-waff-captcha/useAWSWAFCaptchaFetch";
 
 // Inicializa el cliente de Supabase
 export const supabase = createClient(
@@ -250,6 +251,7 @@ const Formulario = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef(null);
+  const captchaFetch = useAWSWAFCaptchaFetch();
 
   const handleLookinforChange = (e) => {
     const { name, value } = e.target;
@@ -315,7 +317,7 @@ const Formulario = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = formRef.current;
 
@@ -330,9 +332,10 @@ const Formulario = () => {
         lookingfor,
       } = formData;
 
-      try {
-        setIsSubmitting(true);
-        const result = await supabase.from("clients").insert({
+      setIsSubmitting(true);
+
+      captchaFetch(
+        supabase.from("clients").insert({
           first_name,
           last_name,
           email,
@@ -340,46 +343,49 @@ const Formulario = () => {
           studies,
           experiences,
           lookingfor,
-        });
-
-        if (!result.error) {
-          toast("Success");
-          setMessage("Data sent successfully!");
-          setFormData({
-            first_name: "",
-            last_name: "",
-            email: "",
-            country: "",
-            studies: [{ degree: "", university: "", graduation: "" }],
-            experiences: [
-              {
-                research_fields: "",
-                university_affiliation: "",
-                fields_of_study: "",
-                problem_solved: "",
-                technology_stack_experience: "",
-                industries: "",
+        })
+      )
+        .then((result) => {
+          if (!result.error) {
+            toast("Success");
+            setMessage("Data sent successfully!");
+            setFormData({
+              first_name: "",
+              last_name: "",
+              email: "",
+              country: "",
+              studies: [{ degree: "", university: "", graduation: "" }],
+              experiences: [
+                {
+                  research_fields: "",
+                  university_affiliation: "",
+                  fields_of_study: "",
+                  problem_solved: "",
+                  technology_stack_experience: "",
+                  industries: "",
+                },
+              ],
+              lookingfor: {
+                desired_fields_of_work: "",
+                desired_equipment: "",
+                desired_technology_stack: "",
+                desired_industry: "",
+                desired_problem_to_solve: "",
               },
-            ],
-            lookingfor: {
-              desired_fields_of_work: "",
-              desired_equipment: "",
-              desired_technology_stack: "",
-              desired_industry: "",
-              desired_problem_to_solve: "",
-            },
-          });
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
-        } else {
-          setMessage("Error sending data: " + result.error.message);
-        }
-      } catch (error) {
-        setMessage("Error sending data: " + error.message);
-      } finally {
-        setIsSubmitting(false);
-      }
+            });
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 2000);
+          } else {
+            setMessage("Error sending data: " + result.error.message);
+          }
+        })
+        .catch((error) => {
+          setMessage("Error sending data: " + error.message);
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } else {
       setMessage("Please fill out all fields correctly.");
       form.reportValidity();

@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { AWSWAFCaptchaModal } from "../aws-waff-captcha/AWSWAFFCaptchaModal";
 import "@fontsource-variable/manrope";
 ---
 
@@ -21,6 +22,7 @@ import "@fontsource-variable/manrope";
   <body>
     <Header />
     <slot />
+    <AWSWAFCaptchaModal client:only />
     <Footer />
   </body>
 </html>
@@ -45,4 +47,29 @@ import "@fontsource-variable/manrope";
   body {
     width: fit-content;
   }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.5);
+    display: none;
+    z-index: 999;
+  }
+
+  .modal {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  }
 </style>
+
+<script>
+  import { loadWAFEnv } from "../aws-waff-captcha/util";
+
+  await loadWAFEnv();
+</script>
