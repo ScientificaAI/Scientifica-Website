@@ -7,6 +7,14 @@ export function useAWSWAFCaptchaFetch() {
     document.getElementById("modal").style.display = "block";
 
     return new Promise((resolve) => {
+      const wafEnv = getWAFEnv();
+      if (!wafEnv || !wafEnv.CAPTCHA_API_KEY) {
+        console.error("WAF environment is not loaded properly");
+        document.getElementById("modalOverlay").style.display = "none";
+        document.getElementById("modal").style.display = "none";
+        return resolve();
+      }
+
       window.AwsWafCaptcha.renderCaptcha(
         document.getElementById("captchaForm"),
         {
@@ -18,7 +26,7 @@ export function useAWSWAFCaptchaFetch() {
           onLoad: () => {
             document.body.style.cursor = "default";
           },
-          apiKey: getWAFEnv().CAPTCHA_API_KEY,
+          apiKey: wafEnv.CAPTCHA_API_KEY,
         }
       );
     });
