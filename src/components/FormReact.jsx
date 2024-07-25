@@ -222,6 +222,19 @@ const inputsPersonalInfo = [
   },
 ];
 
+const socialInputs = [
+  {
+    id: 1,
+    name: "social",
+    type: "text",
+    placeholder: " ",
+    errorMessage: "Debe tener 16 caracteres o menos y solo letras.",
+    label: "Linkedin",
+    required: true,
+    pattern: "^[A-Za-z ]{1,16}$",
+  },
+];
+
 const Formulario = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -229,6 +242,7 @@ const Formulario = () => {
     email: "",
     country: "",
     studies: [{ degree: "", university: "", graduation: "" }],
+    social: [{ social: "" }],
     experiences: [
       {
         research_fields: "",
@@ -250,6 +264,19 @@ const Formulario = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef(null);
+
+  const validateURL = (url) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)?" +
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" +
+        "((\\d{1,3}\\.){3}\\d{1,3}))" +
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
+        "(\\?[;&a-z\\d%_.~+=-]*)?" +
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    );
+    return !!urlPattern.test(url);
+  };
 
   const handleLookinforChange = (e) => {
     const { name, value } = e.target;
@@ -275,6 +302,20 @@ const Formulario = () => {
         ...formData,
         experiences: updatedExperiences,
       });
+    } else if (section === "social") {
+      if (Array.isArray(formData.social)) {
+        const updateSocial = [...formData.social];
+        const indexToRemove = 0;
+        if (indexToRemove >= 0 && indexToRemove < updateSocial.length) {
+          updateSocial.splice(indexToRemove, 1);
+        }
+        setFormData({
+          ...formData,
+          social: updateSocial,
+        });
+      } else {
+        console.error("formData.social is not an array:", formData.social);
+      }
     } else {
       console.error("Sección desconocida:", section);
     }
@@ -325,6 +366,7 @@ const Formulario = () => {
         last_name,
         email,
         country,
+        social,
         studies,
         experiences,
         lookingfor,
@@ -339,6 +381,7 @@ const Formulario = () => {
           email,
           country,
           studies,
+          social,
           experiences,
           lookingfor,
         });
@@ -352,6 +395,7 @@ const Formulario = () => {
             email: "",
             country: "",
             studies: [{ degree: "", university: "", graduation: "" }],
+            social: [{ social: "" }],
             experiences: [
               {
                 research_fields: "",
@@ -421,6 +465,67 @@ const Formulario = () => {
           ))}
         </div>
 
+        <div>
+          <div class="flex justify-between pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
+            <h4 class="text-medium font-semibold text-gray-900 dark:text-white">
+              Social Media
+            </h4>
+            <button
+              type="button"
+              onClick={() => handleDeleteSection("social")}
+              className="text-red-600 hover:text-red-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
+              </svg>
+            </button>
+          </div>
+          {formData.social.map((social, index) => (
+            <div className="w-full" key={index}>
+              {socialInputs.map((input) => (
+                <InputForm
+                  key={input.id}
+                  type={input.type}
+                  name={input.name}
+                  value={social[input.name]}
+                  onChange={(e) => handleChange(e, index, "social")}
+                  id={input.name}
+                  placeholder={input.placeholder}
+                  required={input.required}
+                  pattern={input.pattern}
+                  errorMessage={input.errorMessage}
+                />
+              ))}
+            </div>
+          ))}
+          <button
+            id="btn-action"
+            onClick={() => handleAddSection("social")}
+            type="button"
+            className="text-[#0024ff] mb-14 inline-flex items-center bg-transparent font-medium rounded-lg text-sm text-center"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+            Add social media
+          </button>
+        </div>
+
         {/* Studies Information */}
 
         <>
@@ -446,7 +551,6 @@ const Formulario = () => {
                   </svg>
                 </button>
               </div>
-
               <div className="grid gap-4  sm:grid-cols-1">
                 {formData.studies.map((study, index) => (
                   <div className="w-full" key={index}>
