@@ -7,7 +7,7 @@ import IconHero from "./IconHero.astro";
 <section class="flex flex-col w-full h-full md:pb-8 md:flex-row bg-white">
   <!-- header section: Text content -->
   <div
-    class="order-1 md:relative md:left-4 md:pl-4 md:w-[42%] md:ml-10 flex flex-col md:mt-16"
+    class="order-1 md:relative md:left-4 md:pl-4 md:w-[43%] md:ml-10 flex flex-col md:mt-16"
   >
     <h1
       class="text-8xl font-medium mb-4 animate-blurred-fade-in text-center md:text-start"
@@ -49,17 +49,17 @@ import IconHero from "./IconHero.astro";
   <!--hero section -->
 </section>
 
-<style>
+<style is:inline>
   @font-face {
     font-family: "Biotif";
-    src: url("/font/biotif.otf") format("otf");
-    font-weight: 900;
+    src: url("/font/biotif.otf") format("opentype");
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
 
   h1,
-  h1 > span {
-    font-family: "Biotif", system-ui, sans-serif;
+  span {
+    font-family: "Biotif";
   }
 </style>
