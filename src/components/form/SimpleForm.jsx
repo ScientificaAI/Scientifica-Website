@@ -1,6 +1,4 @@
 import { useState, useRef } from "react";
-import { Toaster, toast } from "sonner";
-import { supabase } from "../FormReact";
 import InputForm from "../InputForm";
 import SelectForm from "../SelectForm";
 
@@ -176,7 +174,6 @@ const SimpleForm = () => {
 
   return (
     <div>
-      <Toaster />
       <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
         <div className="grid gap-4 mb-4 sm:grid-cols-2">
           {inputs.map((input) => (

@@ -1,14 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
 import { useRef, useState } from "react";
-import { Toaster, toast } from "sonner";
+import toast, {Toaster} from "react-hot-toast";
+
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
-
-// Inicializa el cliente de Supabase
-export const supabase = createClient(
-  "https://cqdcqwnibdsnijtbgafa.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxZGNxd25pYmRzbmlqdGJnYWZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTgyODMsImV4cCI6MjAzNTA3NDI4M30.s15-GrZmSAUQgXtFCG235m1mtX-9zgUBP1iatghNKQk"
-);
+import { v4 as uuidv4 } from 'uuid';
 
 export const TextAreaForm = ({
   name,
@@ -263,20 +258,11 @@ const Formulario = () => {
   });
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef(null);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const validateURL = (url) => {
-    const urlPattern = new RegExp(
-      "^(https?:\\/\\/)?" +
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" +
-        "((\\d{1,3}\\.){3}\\d{1,3}))" +
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-        "(\\?[;&a-z\\d%_.~+=-]*)?" +
-        "(\\#[-a-z\\d_]*)?$",
-      "i"
-    );
-    return !!urlPattern.test(url);
-  };
+  const formRef = useRef(null);
 
   const handleLookinforChange = (e) => {
     const { name, value } = e.target;
@@ -356,87 +342,72 @@ const Formulario = () => {
     });
   };
 
+ /*  const generateRandomId = () => {
+    return Math.floor(Math.random() * 1000000);
+  };
+ */
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = formRef.current;
+    const endPoint =
+      "https://0ojhyy73x3.execute-api.us-east-2.amazonaws.com/items";
 
-    if (form.checkValidity()) {
-      const {
-        first_name,
-        last_name,
-        email,
-        country,
-        social,
-        studies,
-        experiences,
-        lookingfor,
-      } = formData;
+    const id2 = uuidv4();
 
-      try {
-        setIsSubmitting(true);
+    const data1 = {
+      id: id2,
+      ...formData,
+    };
 
-        const result = await supabase.from("clients").insert({
-          first_name,
-          last_name,
-          email,
-          country,
-          studies,
-          social,
-          experiences,
-          lookingfor,
-        });
+    setPending(true);
+    setError(null);
+    setSuccess(null);
 
-        if (!result.error) {
-          toast("Success");
-          setMessage("Data sent successfully!");
-          setFormData({
-            first_name: "",
-            last_name: "",
-            email: "",
-            country: "",
-            studies: [{ degree: "", university: "", graduation: "" }],
-            social: [{ social: "" }],
-            experiences: [
-              {
-                research_fields: "",
-                university_affiliation: "",
-                fields_of_study: "",
-                problem_solved: "",
-                technology_stack_experience: "",
-                industries: "",
-              },
-            ],
-            lookingfor: {
-              desired_fields_of_work: "",
-              desired_equipment: "",
-              desired_technology_stack: "",
-              desired_industry: "",
-              desired_problem_to_solve: "",
-            },
-          });
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
-        } else {
-          setMessage("Error sending data: " + result.error.message);
-        }
-      } catch (error) {
-        setMessage("Error sending data: " + error.message);
-      } finally {
-        setIsSubmitting(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    toast.loading("sending...")    
+
+    try {
+      const response = await fetch(endPoint, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data1),
+      });    
+      
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    } else {
-      setMessage("Please fill out all fields correctly.");
-      form.reportValidity();
+      
+      const data = await response.json();
+      toast.success("Success")
+    } catch (error) {
+      toast.error("Failed to save item.");
+    } finally {
+      setPending(false);
     }
   };
 
   return (
     <>
-      <Toaster />
+    <Toaster 
+        position="top-right"
+        reverseOrder={true}
+        toastOptions={{
+          success: {
+            duration: 10000,
+            theme: {
+              primary: "green"
+            }
+          },
+          loading: {
+            duration:1500,
+          }
+        }}
+      />
       <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
         {/* Personal Information */}
         <div className="grid gap-4 mb-4 sm:grid-cols-2">
+          
           {inputsPersonalInfo.map((input) => (
             <div key={input.id}>
               {input.ext ? (

@@ -2,12 +2,12 @@
 import Accordion from "../../components/Accordion.astro";
 import Card3 from "../../components/Card3.astro";
 import GridSection from "../../components/GridSection.astro";
+import VectorServices from "../../components/VectorServices.astro";
 import ModalForm from "../../components/form/ModalForm.astro";
 import { card3 } from "../../data/card3";
 import { card4 } from "../../data/card4";
 import { list1 } from "../../data/list1";
 import Layout from "../../layouts/Layout.astro";
-import VectorServices from "../../components/VectorServices.astro";
 ---
 
 <Layout title="services page">
@@ -66,7 +66,7 @@ import VectorServices from "../../components/VectorServices.astro";
           id="btn-modal"
           class="text-white text-xl font-semibold text-center rounded-lg py-2 px-4"
         >
-          Start conversation
+          Start a conversation
         </button>
       </div>
 
@@ -78,12 +78,9 @@ import VectorServices from "../../components/VectorServices.astro";
   </main>
 </Layout>
 
-<!-- <style>
-  #primary {
-    background-image: url("/public/Capa11.svg");
-    min-height: 400px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
+<style>
+  main{
+    margin-top: 60px;
   }
-</style> -->
+</style>

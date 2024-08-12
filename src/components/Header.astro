@@ -4,18 +4,18 @@ import IconLinkedin from "./IconLinkedin.astro";
 import IconMedium from "./IconMedium.astro";
 ---
 
-<header class="bg-white text-black md:py-2 pb-6 px-8 py-10">
+<header>
   <div class="container mr-auto flex justify-between items-center">
     <!-- Left container: Logo -->
-    <div class="flex items-center md:pl-20">
+    <div class="flex items-center md:ml-11">
       <img
         src="https://res.cloudinary.com/dqxd8euqj/image/upload/v1720534873/logo_fmtgrn.png"
         alt="Logo"
-        class="h-10"
+        class="h-8"
       />
     </div>
     <!-- Right container: Navigation links for desktop -->
-    <div class="hidden md:flex space-x-6">
+    <div class="hidden md:flex space-x-10 md:justify-center md:items-center">
       {
         navLinks.map((link) => (
           <a href={link.href} class="hover:text-[#0024ff] md:text-xl">
@@ -80,6 +80,32 @@ import IconMedium from "./IconMedium.astro";
   </div>
 </header>
 
+<style>
+  header {
+    position: fixed;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem; 
+    min-height: 3.5rem;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-down header {
+    transform: translate3d(0, -100px, 0);
+  }
+
+  .scroll-up header {
+    filter: drop-shadow(0 -10px 20px rgba(170, 170, 170));
+  }
+</style>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("menu-button");
@@ -94,5 +120,36 @@ import IconMedium from "./IconMedium.astro";
         mobileMenu!.classList.remove("max-h-screen", "opacity-100");
       }
     });
+  });
+</script>
+
+<script>
+  const header = document.querySelector("header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll <= 0) {
+      header!.classList.remove("scroll-up");
+    }
+
+    if (
+      currentScroll > lastScroll &&
+      !header!.classList.contains("scroll-down")
+    ) {
+      header!.classList.remove("scroll-up");
+      header!.classList.add("scroll-down");
+    }
+
+    if (
+      currentScroll < lastScroll &&
+      header!.classList.contains("scroll-down")
+    ) {
+      header!.classList.remove("scroll-down");
+      header!.classList.add("scroll-up");
+    }
+
+    lastScroll = currentScroll;
   });
 </script>

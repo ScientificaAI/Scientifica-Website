@@ -1,20 +1,21 @@
 ---
 import IconHero from "./IconHero.astro";
-import ModalForm from "./form/ModalForm.astro";
 
 // components/Hero.astro
 ---
 
-<section class="flex flex-col w-full h-full md:mb-4 md:flex-row bg-white">
+<section class="flex flex-col w-full h-full md:pb-8 md:flex-row bg-white">
   <!-- header section: Text content -->
   <div
-    class="order-1 md:relative md:left-10 md:pl-4 md:w-[38%] md:ml-10 flex flex-col"
+    class="order-1 md:relative md:left-4 md:pl-4 md:w-[42%] md:ml-10 flex flex-col md:mt-16"
   >
     <h1
-      class="text-8xl md:text-start text-center font-medium mb-4 animate-blurred-fade-in"
+      class="text-8xl font-medium mb-4 animate-blurred-fade-in text-center md:text-start"
     >
-      UNLOCK THE POWER OF AI WITH <span class="text-[#0024ff]">SCIENTIFICA</span
-      >
+      <span class="block">UNLOCK</span>
+      <span class="block">THE POWER</span>
+      <span class="block">OF AI WITH</span>
+      <span class="block text-[#0024ff]">SCIENTIFICA</span>
     </h1>
 
     <div class="flex">
@@ -24,7 +25,7 @@ import ModalForm from "./form/ModalForm.astro";
     <!--foot section -->
     <div class="md:mt-0 mt-4 mb-4 order-3 md:order-2">
       <span
-        class="flex mb-4 md:text-xl text-4xl text-center md:text-start md:w-[660px]"
+        class="flex mb-4 md:text-xl text-4xl text-center md:text-start md:w-[700px]"
       >
         From expanding knowledge to creating new opportunities, explore what
         your organization can achieve when there are no limits.
@@ -42,13 +43,11 @@ import ModalForm from "./form/ModalForm.astro";
     </div>
   </div>
 
-  <div class="hidden order-2 md:order-3 h-[300px] p-2 md:p-0 md:pb-10 md:flex">
+  <div class="hidden order-2 md:order-3 h-[300px] p-2 md:p-0 md:pb-10 md:flex md:mt-16">
     <IconHero class="md:w-full" />
   </div>
   <!--hero section -->
 </section>
-
-<ModalForm />
 
 <style>
   @font-face {

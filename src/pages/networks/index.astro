@@ -1,9 +1,9 @@
 ---
 import IconFlag from "../../components/IconFlag.astro";
+import VectorNetwor from "../../components/VectorNetwor.astro";
 import ModalForm from "../../components/form/ModalForm.astro";
 import { list3 } from "../../data/list3";
 import Layout from "../../layouts/Layout.astro";
-import VectorNetwor from "../../components/VectorNetwor.astro";
 ---
 
 <Layout title="Networks page">
@@ -64,9 +64,11 @@ import VectorNetwor from "../../components/VectorNetwor.astro";
           {
             list3.map((raw) => (
               <div class="md:m-auto bg-[#0024ff] hover:scale-105 hover:opacity-75 rounded-lg cursor-pointer p-2 md:min-w-[350px] m-auto mb-10">
-                <button class="btn-modal text-white text-xl font-semibold text-center rounded-lg py-2 px-4 w-full">
-                  {raw.title}
-                </button>
+                <a href="/contact" class="block">
+                  <button class="btn-modal text-white text-xl font-semibold text-center rounded-lg py-2 px-4 w-full">
+                    {raw.title}
+                  </button>
+                </a>
               </div>
             ))
           }
