@@ -7,10 +7,10 @@ import IconHero from "./IconHero.astro";
 <section class="flex flex-col w-full h-full md:pb-8 md:flex-row bg-white">
   <!-- header section: Text content -->
   <div
-    class="order-1 md:relative md:left-4 md:pl-4 md:w-[43%] md:ml-10 flex flex-col md:mt-16"
+    class="order-1 md:relative md:left-4 md:pl-4 md:w-[40%] md:ml-10 flex flex-col mt-28"
   >
     <h1
-      class="text-8xl font-medium mb-4 animate-blurred-fade-in text-center md:text-start"
+      class="cadama mb-4 animate-blurred-fade-in text-center md:text-start"
     >
       <span class="block">UNLOCK</span>
       <span class="block">THE POWER</span>
@@ -25,7 +25,7 @@ import IconHero from "./IconHero.astro";
     <!--foot section -->
     <div class="md:mt-0 mt-4 mb-4 order-3 md:order-2">
       <span
-        class="flex mb-4 md:text-xl text-4xl text-center md:text-start md:w-[700px]"
+        class=" flex mb-4 md:text-xl text-4xl text-center md:text-start md:w-[700px]"
       >
         From expanding knowledge to creating new opportunities, explore what
         your organization can achieve when there are no limits.
@@ -58,8 +58,13 @@ import IconHero from "./IconHero.astro";
     font-display: swap;
   }
 
-  h1,
-  span {
+  body {
+    width: fit-content;
+  }
+
+  .cadama > span {
     font-family: "Biotif";
+    font-size: 5.5rem;
+    line-height: 1;
   }
 </style>

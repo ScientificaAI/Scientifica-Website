@@ -1,9 +1,40 @@
 import { useRef, useState } from "react";
-import toast, {Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+
+const BackButton = () => {
+  const handleClick = () => {
+    window.history.back();
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className="fixed top-18 z-50 md:left-14 p-3 bg-[#0024ff] text-white rounded-full shadow-md hover:bg-opacity-50 focus:outline-none"
+    >
+      <svg
+        class="w-6 h-6 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m15 19-7-7 7-7"
+        />
+      </svg>
+    </button>
+  );
+};
 
 export const TextAreaForm = ({
   name,
@@ -342,7 +373,7 @@ const Formulario = () => {
     });
   };
 
- /*  const generateRandomId = () => {
+  /*  const generateRandomId = () => {
     return Math.floor(Math.random() * 1000000);
   };
  */
@@ -362,8 +393,8 @@ const Formulario = () => {
     setError(null);
     setSuccess(null);
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    toast.loading("sending...")    
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    toast.loading("sending...");
 
     try {
       const response = await fetch(endPoint, {
@@ -372,14 +403,14 @@ const Formulario = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data1),
-      });    
-      
+      });
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      
+
       const data = await response.json();
-      toast.success("Success")
+      toast.success("Success");
     } catch (error) {
       toast.error("Failed to save item.");
     } finally {
@@ -389,25 +420,35 @@ const Formulario = () => {
 
   return (
     <>
-    <Toaster 
+      <Toaster
         position="top-right"
         reverseOrder={true}
         toastOptions={{
           success: {
             duration: 10000,
             theme: {
-              primary: "green"
-            }
+              primary: "green",
+            },
           },
           loading: {
-            duration:1500,
-          }
+            duration: 1500,
+          },
         }}
       />
-      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
+      <BackButton />
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="flex flex-col p-10"
+      >
         {/* Personal Information */}
+        <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 min-h-40">
+          <h3 class="text-lg font-semibold text-gray-900  ">
+            Personal Information
+          </h3>
+        </div>
+
         <div className="grid gap-4 mb-4 sm:grid-cols-2">
-          
           {inputsPersonalInfo.map((input) => (
             <div key={input.id}>
               {input.ext ? (
@@ -438,7 +479,7 @@ const Formulario = () => {
 
         <div>
           <div class="flex justify-between pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
-            <h4 class="text-medium font-semibold text-gray-900 dark:text-white">
+            <h4 class="text-medium font-semibold text-gray-900">
               Social Media
             </h4>
             <button
@@ -503,9 +544,7 @@ const Formulario = () => {
           {formData.studies.map((study, index) => (
             <div key={index} className="mb-1">
               <div class="flex justify-between pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  Studies
-                </h3>
+                <h3 class="text-lg font-semibold text-gray-900 ">Studies</h3>
                 <button
                   type="button"
                   onClick={() => handleDeleteSection("studies")}
@@ -576,9 +615,7 @@ const Formulario = () => {
         {formData.experiences.map((experience, index) => (
           <div key={index} className="mb-0">
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Experience
-              </h3>
+              <h3 class="text-lg font-semibold text-gray-900 ">Experience</h3>
               <button
                 aria-label="delete"
                 type="button"
@@ -659,7 +696,7 @@ const Formulario = () => {
 
         <>
           <div class="flex justify-between items-center pb-4 mb-4 mt-6 rounded-t border-b sm:mb-5 dark:border-gray-600">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 class="text-lg font-semibold text-gray-900 ">
               What are you looking for?
             </h3>
           </div>
@@ -708,7 +745,7 @@ const Formulario = () => {
               name="desired_problem_to_solve"
               value={formData.lookingfor.desired_problem_to_solve}
               onChange={handleLookinforChange}
-              className="rounded-xl border-gray-400 p-4"
+              className="rounded-xl border border-gray-400 p-4"
               placeholder="Desired problem to solve"
             ></textarea>
           </div>

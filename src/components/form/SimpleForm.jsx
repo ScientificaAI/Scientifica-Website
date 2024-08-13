@@ -137,16 +137,8 @@ const SimpleForm = () => {
 
       try {
         setIsSubmitting(true);
-        const result = await supabase.from("clients").insert({
-          first_name,
-          last_name,
-          email,
-          country,
-          message,
-        });
-
+       
         if (!result.error) {
-          toast("Success");
           setMessage("Data sent successfully!");
           setFormData({
             first_name: "",

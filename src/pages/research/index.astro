@@ -2,19 +2,19 @@
 import Accordion2 from "../../components/Accordion2.astro";
 import Card5 from "../../components/Card5.astro";
 import GridSection from "../../components/GridSection.astro";
+import VectorResearch from "../../components/VectorResearch.astro";
 import { card6 } from "../../data/card6";
 import { col1, col2, col3 } from "../../data/card7";
 import { list2 } from "../../data/list2";
 import Layout from "../../layouts/Layout.astro";
-import VectorResearch from "../../components/VectorResearch.astro";
 ---
 
 <Layout title="Research page">
   <main>
     <!--Hero Services Page -->
     <section id="primary" class="md:min-h-96">
-      <VectorResearch class="absolute -z-10 w-full" />
-      <div class="m-auto pb-4 pt-20">
+      <VectorResearch class="md:absolute fixed -z-50 w-full" />
+      <div class="m-auto pb-4 md:pt-20">  
         <h1 class="text-7xl font-bold text-center animate-slide-in-top">
           Research
         </h1>
@@ -121,6 +121,9 @@ import VectorResearch from "../../components/VectorResearch.astro";
 </Layout>
 
 <style>
+  main {
+    margin-top: 60px;
+  }
   li {
     list-style: disc;
   }

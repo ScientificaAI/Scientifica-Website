@@ -7,18 +7,25 @@ import Layout from "../../layouts/Layout.astro";
 <Layout title="contact">
   <div class="grid-container">
     <!-- Modal header -->
-    <HeaderModal />
-
     <Formulario client:load />
   </div>
 </Layout>
 
-<style>
+<style is:inline>
+  body {
+    width: auto;
+  }
   .grid-container {
     min-height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0px 200px 0px 200px;
     padding-top: 70px;
+  }
+
+  @media (max-width: 768px) {
+    .grid-container {
+      margin: 1rem;
+    }
   }
 </style>
