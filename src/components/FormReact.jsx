@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
 import { v4 as uuidv4 } from "uuid";
@@ -13,7 +12,7 @@ const BackButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="fixed top-18 z-50 md:left-14 p-3 bg-[#0024ff] text-white rounded-full shadow-md hover:bg-opacity-50 focus:outline-none"
+      className="fixed top-18 z-50 md:left-[3rem] p-3 bg-[#0024ff] text-white rounded-full shadow-md hover:bg-opacity-50 focus:outline-none"
     >
       <svg
         class="w-6 h-6 text-gray-800 dark:text-white"
@@ -373,12 +372,9 @@ const Formulario = () => {
     });
   };
 
-  /*  const generateRandomId = () => {
-    return Math.floor(Math.random() * 1000000);
-  };
- */
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = formRef.current;
     const endPoint =
       "https://0ojhyy73x3.execute-api.us-east-2.amazonaws.com/items";
 
@@ -396,32 +392,62 @@ const Formulario = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     toast.loading("sending...");
 
-    try {
-      const response = await fetch(endPoint, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data1),
-      });
+    if (form.checkValidity()) {
+      try {
+        const response = await fetch(endPoint, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data1),
+        });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        toast.success("Success");
+        setFormData({
+          first_name: "",
+          last_name: "",
+          email: "",
+          country: "",
+          studies: [{ degree: "", university: "", graduation: "" }],
+          social: [{ social: "" }],
+          experiences: [
+            {
+              research_fields: "",
+              university_affiliation: "",
+              fields_of_study: "",
+              problem_solved: "",
+              technology_stack_experience: "",
+              industries: "",
+            },
+          ],
+          lookingfor: {
+            desired_fields_of_work: "",
+            desired_equipment: "",
+            desired_technology_stack: "",
+            desired_industry: "",
+            desired_problem_to_solve: "",
+          },
+        });
+      } catch (error) {
+        toast.error("Failed to save item.");
+      } finally {
+        setPending(false);
       }
-
-      const data = await response.json();
-      toast.success("Success");
-    } catch (error) {
-      toast.error("Failed to save item.");
-    } finally {
-      setPending(false);
+    } else {
+      toast.error("Please fill out all fields correctly.");
+      form.reportValidity();
     }
   };
 
   return (
     <>
       <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={true}
         toastOptions={{
           success: {

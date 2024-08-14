@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import InputForm from "../InputForm";
 import SelectForm from "../SelectForm";
+import toast, { Toaster } from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 
 const TextAreaForm = ({ name, value, onChange, placeholder }) => {
   return (
@@ -118,8 +120,10 @@ const SimpleForm = () => {
     country: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const formRef = useRef(null);
 
   const handleChange = (e) => {
@@ -130,42 +134,73 @@ const SimpleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
+    const endPoint = "https://0ojhyy73x3.execute-api.us-east-2.amazonaws.com/items";
+    const id2 = uuidv4();
 
-    // Check if the form is valid
+    const data1 = {
+      id: id2,
+      ...formData,
+    };
+
+    setIsSubmitting(false);
+
     if (form.checkValidity()) {
-      const { first_name, last_name, email, country, message } = formData;
-
       try {
-        setIsSubmitting(true);
-       
-        if (!result.error) {
-          setMessage("Data sent successfully!");
-          setFormData({
-            first_name: "",
-            last_name: "",
-            email: "",
-            country: "",
-            message: "",
-          });
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
-        } else {
-          setMessage("Error sending data: " + result.error.message);
+        const response = await fetch(endPoint, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data1),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+
+        const data = await response.json();
+        setMessage("Data sent successfully!");
+        toast.success(message);
+        setFormData({
+          first_name: "",
+          last_name: "",
+          email: "",
+          country: "",
+          message: "",
+        });
+        /* setTimeout(() => {
+          window.location.href = "/";
+        }, 2000); */
       } catch (error) {
         setMessage("Error sending data: " + error.message);
+        toast.error(message)
       } finally {
         setIsSubmitting(false);
       }
     } else {
       setMessage("Please fill out all fields correctly.");
+      toast.error(message);
       form.reportValidity();
     }
   };
 
   return (
     <div>
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+        toastOptions={{
+          success: {
+            duration: 10000,
+            theme: {
+              primary: "green",
+            },
+          },
+          loading: {
+            duration: 1500,
+          },
+        }}
+      />
       <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
         <div className="grid gap-4 mb-4 sm:grid-cols-2">
           {inputs.map((input) => (
