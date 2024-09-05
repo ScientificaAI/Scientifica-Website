@@ -19,12 +19,37 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
   main {
-    margin: 0 auto;
-    color: black;
-    font-size: 20px;
-    line-height: 1.6;
+    margin-top: 0px;
+  }
+
+  .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
   }
 </style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("flex");
+      } else {
+        entry.target.classList.remove("flex");
+      }
+    });
+  });
+
+  const hiddenElements = document.querySelectorAll(".hidden");
+  hiddenElements.forEach((el) => observer.observe(el));
+</script>
 
 <script>
   let valueDisplays = document.querySelectorAll(".num");

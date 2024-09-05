@@ -6,7 +6,6 @@ interface Props {
 const { title } = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { AWSWAFCaptchaModal } from "../aws-waff-captcha/AWSWAFFCaptchaModal";
 import "@fontsource-variable/manrope";
 ---
 
@@ -22,7 +21,6 @@ import "@fontsource-variable/manrope";
   <body>
     <Header />
     <slot />
-    <AWSWAFCaptchaModal client:only />
     <Footer />
   </body>
 </html>
@@ -47,8 +45,6 @@ import "@fontsource-variable/manrope";
     background: #fff;
     background-size: 224px;
   }
-
-  
 
   .overlay {
     position: fixed;

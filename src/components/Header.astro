@@ -41,67 +41,109 @@ import IconMedium from "./IconMedium.astro";
       </svg>
     </button>
   </div>
-  <!-- Mobile menu -->
-  <div
-    id="mobile-menu"
-    class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out opacity-0"
-  >
-    <nav class="flex flex-col space-y-2 py-6 items-center justify-center">
-      {
-        navLinks.map((link) => (
-          <a href={link.href} class="hover:text-blue-600 text-4xl">
-            <span class="my-4 flex">{link.text}</span>
-          </a>
-        ))
-      }
-      <div class="flex">
-        <div class="m-10 w-15">
-          <a
-            target="_blank"
-            rel="noopener"
-            href=""
-            class="hover:scale-125 hover:opacity-75 transition inline-block"
-          >
-            <IconLinkedin />
-          </a>
-        </div>
-        <div class="m-10 w-15">
-          <a
-            target="_blank"
-            rel="noopener"
-            href=""
-            class="hover:scale-125 hover:opacity-75 transition inline-block"
-          >
-            <IconMedium />
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
 </header>
+<!-- Mobile menu -->
+<div id="mobile-nav" class="mobile-nav">
+  <nav>
+    {
+      navLinks.map((link) => (
+        <a href={link.href}>
+          <span>{link.text}</span>
+        </a>
+      ))
+    }
+    <div class="flex">
+      <div class="m-10 w-15">
+        <a
+          target="_blank"
+          rel="noopener"
+          href=""
+          class="hover:scale-125 hover:opacity-75 transition inline-block"
+        >
+          <IconLinkedin />
+        </a>
+      </div>
+      <div class="m-10 w-15">
+        <a
+          target="_blank"
+          rel="noopener"
+          href=""
+          class="hover:scale-125 hover:opacity-75 transition inline-block"
+        >
+          <IconMedium />
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<style>
+<style lang="scss">
+  .mobile-nav {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    max-height: 0;
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 100px;
+
+      a {
+        font-size: 2.25rem;
+        line-height: 2.25rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        &:hover {
+          color: rgb(37 99 235);
+        }
+      }
+    }
+  }
+
+  .mobile-active {
+    display: contents;
+    opacity: 1;
+    max-height: 500px;
+    min-width: 900px;
+    background-color: #fff;
+    z-index: 9999;
+    top: 100px;
+  }
+
   header {
     position: fixed;
     width: 100%;
-    background-color: #ffffff;
+    height: 40px;
+    background-color: #fffff1;
     color: #000000;
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
     padding-left: 2rem;
-    padding-right: 2rem; 
+    padding-right: 2rem;
     min-height: 3.5rem;
     top: 0;
     left: 0;
-    z-index: 50;
+    z-index: 99;
     transition: all 0.3s ease;
   }
 
-  .scroll-down  {
+  .active {
+    color: #0024ff;
+  }
+
+  .scroll-down {
     transform: translate3d(0, -100px, 0);
   }
 
-  .scroll-up  {
+  .scroll-up {
     filter: drop-shadow(0 -10px 20px rgba(170, 170, 170));
   }
 </style>
@@ -109,16 +151,10 @@ import IconMedium from "./IconMedium.astro";
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenu = document.getElementById("mobile-nav");
 
     menuButton!.addEventListener("click", () => {
-      if (mobileMenu!.classList.contains("max-h-0")) {
-        mobileMenu!.classList.remove("max-h-0", "opacity-0");
-        mobileMenu!.classList.add("max-h-screen", "opacity-100");
-      } else {
-        mobileMenu!.classList.add("max-h-0", "opacity-0");
-        mobileMenu!.classList.remove("max-h-screen", "opacity-100");
-      }
+      mobileMenu!.classList.toggle("mobile-active");
     });
   });
 </script>
@@ -151,5 +187,19 @@ import IconMedium from "./IconMedium.astro";
     }
 
     lastScroll = currentScroll;
+  });
+</script>
+
+<script>
+  const navlinks = document.querySelectorAll("a");
+  const windowPath = window.location.pathname;
+
+  navlinks.forEach((navLinkEl) => {
+    const navLinkPathName = new URL(navLinkEl.href).pathname;
+    if (windowPath === navLinkPathName) {
+      navLinkEl.classList.add("active");
+    } else {
+      navLinkEl.classList.remove("active");
+    }
   });
 </script>

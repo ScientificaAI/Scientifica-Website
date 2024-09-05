@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
-import InputForm from "../InputForm";
-import SelectForm from "../SelectForm";
+import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
+import InputForm from "../InputForm";
+import SelectForm from "../SelectForm";
 
 const TextAreaForm = ({ name, value, onChange, placeholder }) => {
   return (
@@ -134,7 +134,8 @@ const SimpleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
-    const endPoint = "https://0ojhyy73x3.execute-api.us-east-2.amazonaws.com/items";
+    const endPoint =
+      "https://0ojhyy73x3.execute-api.us-east-2.amazonaws.com/items";
     const id2 = uuidv4();
 
     const data1 = {
@@ -142,7 +143,8 @@ const SimpleForm = () => {
       ...formData,
     };
 
-    setIsSubmitting(false);
+    setIsSubmitting(true);
+    toast.loading("sending...");
 
     if (form.checkValidity()) {
       try {
@@ -160,7 +162,7 @@ const SimpleForm = () => {
 
         const data = await response.json();
         setMessage("Data sent successfully!");
-        toast.success(message);
+        toast.success("Data sent successfully!");
         setFormData({
           first_name: "",
           last_name: "",
@@ -168,12 +170,9 @@ const SimpleForm = () => {
           country: "",
           message: "",
         });
-        /* setTimeout(() => {
-          window.location.href = "/";
-        }, 2000); */
       } catch (error) {
         setMessage("Error sending data: " + error.message);
-        toast.error(message)
+        toast.error(message);
       } finally {
         setIsSubmitting(false);
       }
@@ -197,7 +196,7 @@ const SimpleForm = () => {
             },
           },
           loading: {
-            duration: 1500,
+            duration: 3000,
           },
         }}
       />

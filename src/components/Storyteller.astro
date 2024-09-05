@@ -2,9 +2,9 @@
 import Card from "./Card.astro";
 ---
 
-<section class="bg-[#f0f0f0] flex flex-col xs:flex-row">
-  <div class="bg-[#0024ff] text-white px-10 flex">
-    <p class="text-4xl md:text-2xl p-10 flex text-center md:text-start">
+<section>
+  <div class="section__left">
+    <p>
       Scientifica is a science and technology development company that brings
       together scientific research and AI-driven technology to help businesses
       make better decisions. Whether you need to solve a business problem,
@@ -13,42 +13,128 @@ import Card from "./Card.astro";
     </p>
   </div>
 
-  <div class="flex flex-col md:mb-20 md:mx-20 mx-10">
-    <h2 class="text-3xl font-bold flex pt-20">Our history</h2>
-    <div class="flex items-center justify-center flex-col md:flex-row">
-      <div class="md:w-[50%] mt-14 md:mt-10">
-        <div class="text-4xl md:text-base text-[#171717]">
-          <p>
-            Rooted by renowned Scientists, Scientifica was founded in 2021 after
-            a long stretch of planning during which the demanding needs of
-            business decision makers were thoroughly studied. We harnessed our
-            expertise in building AI solutions and combined it with cutting-edge
-            scientific research to assure highly accurate business intelligence
-            tools and solutions.
-          </p>
-          <br />
-          <p>
-            Soon we were working on use cases for data driven business solutions
-            that were purpose- built and offered laser-focused resolutions to
-            highly sophisticated business problems. These use cases have now
-            become the driving force behind our clients' unprecedented
-            confidence in decision-making, growth and efficiencies.
-          </p>
-          <br />
-          <p>
-            At Scientifica, we understand the strategic importance of AI and its
-            potential to revolutionize businesses, and we are committed to
-            empowering organizations to maximize the benefits of this powerful
-            technology.
-          </p>
-        </div>
+  <div class="section__right">
+    <h2 class="text__title">Our history</h2>
+    <div class="section__right-content">
+      <div class="section__right-text">
+        <p>
+          Rooted by renowned Scientists, Scientifica was founded in 2021 after a
+          long stretch of planning during which the demanding needs of business
+          decision makers were thoroughly studied. We harnessed our expertise in
+          building AI solutions and combined it with cutting-edge scientific
+          research to assure highly accurate business intelligence tools and
+          solutions.
+        </p>
+        <br />
+        <p>
+          Soon we were working on use cases for data driven business solutions
+          that were purpose- built and offered laser-focused resolutions to
+          highly sophisticated business problems. These use cases have now
+          become the driving force behind our clients' unprecedented confidence
+          in decision-making, growth and efficiencies.
+        </p>
+        <br />
+        <p>
+          At Scientifica, we understand the strategic importance of AI and its
+          potential to revolutionize businesses, and we are committed to
+          empowering organizations to maximize the benefits of this powerful
+          technology.
+        </p>
       </div>
 
-      <div
-        class="grid grid-cols-1 md:grid md:grid-cols-2 md:justify-items-end md:mb-24 md:w-[50%] mb-10 mt-10 md:mt-0"
-      >
+      <div class="section__right-card">
         <Card />
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  section {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section__right {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .section__right-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .section__right-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .section__right-text {
+    margin-top: 3.5rem;
+    font-size: 2.5rem;
+    color: #171717;
+  }
+
+  @media (min-width: 768px) {
+    .section__right-text {
+      font-size: 1rem;
+      line-height: 1.5rem/;
+    }
+  }
+
+  .section__left {
+    background-color: #0024ff;
+    color: white;
+    padding: 0 2.5rem 0 2.5rem;
+    display: flex;
+  }
+
+  .section__left > p {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    padding: 2.5rem;
+    display: flex;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .section__left > p {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      text-align: start;
+    }
+  }
+
+  .section__right-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: end;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section__right-card {
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 6rem;
+      margin-top: 0;
+    }
+  }
+
+  .text__title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    padding-top: 5rem;
+  }
+</style>
