@@ -7,5 +7,6 @@ import react from "@astrojs/react";
 export default defineConfig({
   output: "static",
   integrations: [tailwind(), react()],
-  publicDir: './public'
+  publicDir: './public',
+  site:'https://scientifica.ai',
 });
