@@ -135,7 +135,7 @@ const SimpleForm = () => {
     e.preventDefault();
     const form = formRef.current;
     const endPoint =
-      "https://soqlkgd3j6.execute-api.us-east-1.amazonaws.com/items";
+      "https://ur95unwxqd.execute-api.us-east-1.amazonaws.com/items";
     const id2 = uuidv4();
 
     const data1 = {
