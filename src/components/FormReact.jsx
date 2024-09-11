@@ -131,7 +131,7 @@ const studiesInputs = [
     placeholder: " ",
     label: "Degree",
     errorMessage: "Must be 16 characters or less and only letters!",
-    pattern: "^[A-Za-z ]{1,16}$",
+    pattern: "^[A-Za-z, ]{1,50}$",
     required: true,
   },
   {
@@ -141,7 +141,7 @@ const studiesInputs = [
     placeholder: " ",
     label: "University",
     errorMessage: "Must be 16 characters or less and only letters!",
-    pattern: "^[A-Za-z ]{1,16}$",
+    pattern: "^[A-Za-z, ]{1,50}$",
     required: true,
   },
   {
