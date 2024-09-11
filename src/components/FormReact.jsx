@@ -355,20 +355,42 @@ const Formulario = () => {
   };
 
   const handleAddSection = (section) => {
-    const newSection =
-      section === "studies"
-        ? { degree: "", university: "", graduation: "" }
-        : {
-            research_fields: "",
-            university_affiliation: "",
-            fields_of_study: "",
-            problem_solved: "",
-            technology_stack_experience: "",
-            industries: "",
+    setFormData((prevState) => {
+      switch (section) {
+        case "social":
+          return {
+            ...prevState,
+            social: [...prevState.social, { social: "" }],
           };
-    setFormData({
-      ...formData,
-      [section]: [...formData[section], newSection],
+
+        case "studies":
+          return {
+            ...prevState,
+            studies: [
+              ...prevState.studies,
+              { degree: "", university: "", graduation: "" },
+            ],
+          };
+
+        case "experiences":
+          return {
+            ...prevState,
+            experiences: [
+              ...prevState.experiences,
+              {
+                research_fields: "",
+                university_affiliation: "",
+                fields_of_study: "",
+                problem_solved: "",
+                technology_stack_experience: "",
+                industries: "",
+              },
+            ],
+          };
+
+        default:
+          return prevState;
+      }
     });
   };
 
@@ -567,48 +589,46 @@ const Formulario = () => {
         {/* Studies Information */}
 
         <>
-          {formData.studies.map((study, index) => (
-            <div key={index} className="mb-1">
-              <div class="flex justify-between pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
-                <h3 class="text-lg font-semibold text-gray-900 ">Studies</h3>
-                <button
-                  type="button"
-                  onClick={() => handleDeleteSection("studies")}
-                  className="text-red-600 hover:text-red-800"
+          <div className="mb-1">
+            <div class="flex justify-between pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 py-10">
+              <h3 class="text-lg font-semibold text-gray-900 ">Studies</h3>
+              <button
+                type="button"
+                onClick={() => handleDeleteSection("studies")}
+                className="text-red-600 hover:text-red-800"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
-                  </svg>
-                </button>
-              </div>
-              <div className="grid gap-4  sm:grid-cols-1">
-                {formData.studies.map((study, index) => (
-                  <div className="w-full" key={index}>
-                    {studiesInputs.map((input) => (
-                      <InputForm
-                        key={input.id}
-                        type={input.type}
-                        name={input.name}
-                        value={study[input.name]}
-                        onChange={(e) => handleChange(e, index, "studies")}
-                        id={input.name}
-                        placeholder={input.placeholder}
-                        required={input.required}
-                        pattern={input.pattern}
-                        errorMessage={input.errorMessage}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
+                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
+                </svg>
+              </button>
             </div>
-          ))}
+            <div className="grid gap-4  sm:grid-cols-1">
+              {formData.studies.map((study, index) => (
+                <div className="w-full" key={index}>
+                  {studiesInputs.map((input) => (
+                    <InputForm
+                      key={input.id}
+                      type={input.type}
+                      name={input.name}
+                      value={study[input.name]}
+                      onChange={(e) => handleChange(e, index, "studies")}
+                      id={input.name}
+                      placeholder={input.placeholder}
+                      required={input.required}
+                      pattern={input.pattern}
+                      errorMessage={input.errorMessage}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
 
           <>
             {formData.studies.length <= 1 && (
@@ -638,62 +658,60 @@ const Formulario = () => {
 
         {/* Experience Information */}
 
-        {formData.experiences.map((experience, index) => (
-          <div key={index} className="mb-0">
-            <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-              <h3 class="text-lg font-semibold text-gray-900 ">Experience</h3>
-              <button
-                aria-label="delete"
-                type="button"
-                onClick={() => handleDeleteSection("experiences")}
-                className="text-red-600 hover:text-red-800"
+        <div className="mb-0">
+          <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+            <h3 class="text-lg font-semibold text-gray-900 ">Experience</h3>
+            <button
+              aria-label="delete"
+              type="button"
+              onClick={() => handleDeleteSection("experiences")}
+              className="text-red-600 hover:text-red-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
-                </svg>
-              </button>
-            </div>
-
-            <div className="grid gap-4 mb-4 sm:grid-cols-1">
-              {formData.experiences.map((experience, index) => (
-                <div key={index}>
-                  {experiencesInputs.map((input) =>
-                    input.isTextArea ? (
-                      <TextAreaForm
-                        key={input.id}
-                        name={input.name}
-                        value={experience[input.name]}
-                        onChange={(e) => handleChange(e, index, "experiences")}
-                        placeholder={input.placeholder}
-                        required={input.required}
-                        pattern={input.pattern}
-                      />
-                    ) : (
-                      <InputForm
-                        key={input.id}
-                        type={input.type}
-                        name={input.name}
-                        value={experience[input.name]}
-                        onChange={(e) => handleChange(e, index, "experiences")}
-                        id={input.name}
-                        placeholder={input.placeholder}
-                        required={input.required}
-                        pattern={input.pattern}
-                        errorMessage={input.errorMessage}
-                      />
-                    )
-                  )}
-                </div>
-              ))}
-            </div>
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
+              </svg>
+            </button>
           </div>
-        ))}
+
+          <div className="grid gap-4 mb-4 sm:grid-cols-1">
+            {formData.experiences.map((experience, index) => (
+              <div key={index}>
+                {experiencesInputs.map((input) =>
+                  input.isTextArea ? (
+                    <TextAreaForm
+                      key={input.id}
+                      name={input.name}
+                      value={experience[input.name]}
+                      onChange={(e) => handleChange(e, index, "experiences")}
+                      placeholder={input.placeholder}
+                      required={input.required}
+                      pattern={input.pattern}
+                    />
+                  ) : (
+                    <InputForm
+                      key={input.id}
+                      type={input.type}
+                      name={input.name}
+                      value={experience[input.name]}
+                      onChange={(e) => handleChange(e, index, "experiences")}
+                      id={input.name}
+                      placeholder={input.placeholder}
+                      required={input.required}
+                      pattern={input.pattern}
+                      errorMessage={input.errorMessage}
+                    />
+                  )
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
 
         {formData.experiences.length <= 1 && (
           <button
