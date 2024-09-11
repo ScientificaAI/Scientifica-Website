@@ -376,7 +376,7 @@ const Formulario = () => {
     e.preventDefault();
     const form = formRef.current;
     const endPoint =
-      "https://lakn8hgdm0.execute-api.us-east-1.amazonaws.com/items";
+      "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
 
     const id2 = uuidv4();
 
