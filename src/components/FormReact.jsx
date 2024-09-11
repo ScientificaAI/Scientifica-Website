@@ -253,7 +253,8 @@ const socialInputs = [
     name: "social",
     type: "text",
     placeholder: " ",
-    errorMessage: "Debe tener 16 caracteres o menos y solo letras.",
+    errorMessage:
+      "The format should be similar to: https://linkedin.com/in/johndoe.",
     label: "Linkedin",
     required: true,
     pattern: "^http:\\/\\/[A-Za-z0-9]{1,23}\\.com$",
