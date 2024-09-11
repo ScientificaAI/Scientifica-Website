@@ -31,12 +31,18 @@ functions:
     events:
       - httpApi:
           path: /items
-          method: get
-          cors: true
-      - httpApi:
-          path: /items
-          method: put
-          cors: true
+          method: ANY
+          cors:
+            allowedOrigins:
+              - "*"
+            allowedHeaders:
+              - Content-Type
+            allowedMethods:
+              - OPTIONS
+              - GET
+              - POST
+              - PUT
+              - DELETE
 
 resources:
   Resources:
