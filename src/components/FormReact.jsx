@@ -257,7 +257,7 @@ const socialInputs = [
       "The format should be similar to: https://linkedin.com/in/johndoe.",
     label: "Linkedin",
     required: true,
-    pattern: "^http:\\/\\/[A-Za-z0-9]{1,23}\\.com$",
+    pattern: "^https:\\/\\/[A-Za-z0-9]+\\.com\\/in\\/[A-Za-z0-9-]+$",
   },
 ];
 
