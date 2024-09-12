@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+  import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import InputForm from "./InputForm";
 import SelectForm from "./SelectForm";
@@ -257,7 +257,7 @@ const socialInputs = [
       "The format should be similar to: https://linkedin.com/in/johndoe.",
     label: "Linkedin",
     required: true,
-    pattern: "^http:\\/\\/[A-Za-z0-9]{1,23}\\.com$",
+    pattern: "^https:\\/\\/[A-Za-z0-9]{1,23}\\.com$",
   },
 ];
 
