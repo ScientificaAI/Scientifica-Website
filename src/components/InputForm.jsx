@@ -42,7 +42,7 @@ const InputForm = ({
           isValid ? "peer-focus:text-blue-600" : "peer-focus:text-red-500"
         }`}
       >
-        {name.replace("_", " ")} *
+        {name.replace(/_/g, " ")} *
       </label>
       {!isValid && <span className="text-red-500 text-xs">{errorMessage}</span>}
     </div>
