@@ -196,7 +196,8 @@ import IconMedium from "./IconMedium.astro";
     const windowPath = window.location.pathname;
 
     navlinks.forEach((navLinkEl) => {
-      const navLinkPathName = new URL(navLinkEl.href).pathname;
+      const navLinkPathName = new URL(navLinkEl.href, window.location.origin)
+        .pathname;
       if (windowPath === navLinkPathName) {
         navLinkEl.classList.add("active");
       } else {
