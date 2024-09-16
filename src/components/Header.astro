@@ -191,15 +191,17 @@ import IconMedium from "./IconMedium.astro";
 </script>
 
 <script>
-  const navlinks = document.querySelectorAll("a");
-  const windowPath = window.location.pathname;
+  document.addEventListener("DOMContentLoaded", () => {
+    const navlinks = document.querySelectorAll("a");
+    const windowPath = window.location.pathname;
 
-  navlinks.forEach((navLinkEl) => {
-    const navLinkPathName = new URL(navLinkEl.href).pathname;
-    if (windowPath === navLinkPathName) {
-      navLinkEl.classList.add("active");
-    } else {
-      navLinkEl.classList.remove("active");
-    }
+    navlinks.forEach((navLinkEl) => {
+      const navLinkPathName = new URL(navLinkEl.href).pathname;
+      if (windowPath === navLinkPathName) {
+        navLinkEl.classList.add("active");
+      } else {
+        navLinkEl.classList.remove("active");
+      }
+    });
   });
 </script>
