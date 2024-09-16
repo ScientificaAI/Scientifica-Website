@@ -252,7 +252,7 @@ const socialInputs = [
     id: 1,
     name: "social",
     type: "text",
-    placeholder: " ",
+    placeholder: "https://linkedin.com/in/johndoe",
     errorMessage:
       "The format should be similar to: https://linkedin.com/in/johndoe.",
     label: "Linkedin",
