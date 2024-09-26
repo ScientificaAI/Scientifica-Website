@@ -1,6 +1,7 @@
 ---
 import Accordion from "../../components/Accordion.astro";
 import Card3 from "../../components/Card3.astro";
+import SimpleFormModal from "../../components/form/SimpleFormModal.astro";
 import GridSection from "../../components/GridSection.astro";
 import VectorServices from "../../components/VectorServices.astro";
 import { card3 } from "../../data/card3";
@@ -62,10 +63,10 @@ import Layout from "../../layouts/Layout.astro";
         class="md:m-auto flex items-center justify-center bg-[#0024ff] rounded-lg cursor-pointer p-2 md:w-[250px] max-w-[450px] m-auto mb-10"
       >
         <button
-          id="btn-modal"
-          class="text-white text-lg font-semibold text-center rounded-lg py-2 px-4"
+          id="btn-modal2"
+          class="btn-modal2 text-white text-4xl md:text-lg font-semibold rounded-lg py-2 px-4 w-full"
         >
-          <a href="/networks"> Start a conversation </a>
+          Start a conversation
         </button>
       </div>
 
@@ -73,6 +74,7 @@ import Layout from "../../layouts/Layout.astro";
         <GridSection title="Why choose our business services" card={card4} />
       </div>
     </section>
+    <SimpleFormModal />
   </main>
 </Layout>
 
