@@ -257,7 +257,7 @@ const socialInputs = [
       "The format should be similar to: https://linkedin.com/in/johndoe.",
     label: "Linkedin",
     required: true,
-    pattern: "^https://[A-Za-z0-9]{1,20}.com/[A-Za-z0-9-]{1,30}$",
+    pattern: "^[A-Za-z0-9 /:]{3,16}$",
   },
 ];
 
@@ -294,6 +294,122 @@ const Formulario = () => {
   const [success, setSuccess] = useState(null);
 
   const formRef = useRef(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+
+    const endPoint1 =
+      "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
+
+    const endPoint2 =
+      "https://script.google.com/macros/s/AKfycbzr5EDbRi8dV1cimYJ1hcS91GhiZW9iIY2GB49eeVCmiDdH10fyodn2AEPhv62dG9E8dg/exec";
+
+    const id2 = uuidv4();
+
+    const data1 = {
+      id: id2,
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      country: formData.country,
+      social: formData.social.map((socialObj) => socialObj.social),
+      desired_fields_of_work: formData.lookingfor.desired_fields_of_work,
+      desired_equipment: formData.lookingfor.desired_equipment,
+      desired_technology_stack: formData.lookingfor.desired_technology_stack,
+      desired_industry: formData.lookingfor.desired_industry,
+      desired_problem_to_solve: formData.lookingfor.desired_problem_to_solve,
+      experiences: formData.experiences.map((experience) => ({
+        research_fields: experience.research_fields,
+        university_affiliation: experience.university_affiliation,
+        fields_of_study: experience.fields_of_study,
+        problem_solved: experience.problem_solved,
+        technology_stack_experience: experience.technology_stack_experience,
+        industries: experience.industries,
+      })),
+      studies: formData.studies.map((study) => ({
+        degree: study.degree,
+        university: study.university,
+        graduation: study.graduation,
+      })),
+    };
+
+    setPending(true);
+    setError(null);
+    setSuccess(null);
+
+    setFormData({
+      first_name: "",
+      last_name: "",
+      email: "",
+      country: "",
+      studies: [{ degree: "", university: "", graduation: "" }],
+      social: [{ social: "" }],
+      experiences: [
+        {
+          research_fields: "",
+          university_affiliation: "",
+          fields_of_study: "",
+          problem_solved: "",
+          technology_stack_experience: "",
+          industries: "",
+        },
+      ],
+      lookingfor: {
+        desired_fields_of_work: "",
+        desired_equipment: "",
+        desired_technology_stack: "",
+        desired_industry: "",
+        desired_problem_to_solve: "",
+      },
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    toast.loading("sending...");
+
+    if (form.checkValidity()) {
+      try {
+        //AWS endpoint
+        const response = await fetch(endPoint1, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data1),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        //Google Sheets endPoint
+        const response2 = await fetch(endPoint2, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "no-cors",
+          body: JSON.stringify(data1),
+        });
+
+        if (!response2.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const result = await response2.json();
+        console.log(result);
+      } catch (error) {
+        console.error("Failed to save item.");
+      } finally {
+        setPending(false);
+        toast.success("Success");
+      }
+    } else {
+      toast.error("Please fill out all fields correctly.");
+      form.reportValidity();
+    }
+  };
 
   const handleLookinforChange = (e) => {
     const { name, value } = e.target;
@@ -395,78 +511,6 @@ const Formulario = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = formRef.current;
-    const endPoint =
-      "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
-
-    const id2 = uuidv4();
-
-    const data1 = {
-      id: id2,
-      ...formData,
-    };
-
-    setPending(true);
-    setError(null);
-    setSuccess(null);
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    toast.loading("sending...");
-
-    if (form.checkValidity()) {
-      try {
-        const response = await fetch(endPoint, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data1),
-        });
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        toast.success("Success");
-        setFormData({
-          first_name: "",
-          last_name: "",
-          email: "",
-          country: "",
-          studies: [{ degree: "", university: "", graduation: "" }],
-          social: [{ social: "" }],
-          experiences: [
-            {
-              research_fields: "",
-              university_affiliation: "",
-              fields_of_study: "",
-              problem_solved: "",
-              technology_stack_experience: "",
-              industries: "",
-            },
-          ],
-          lookingfor: {
-            desired_fields_of_work: "",
-            desired_equipment: "",
-            desired_technology_stack: "",
-            desired_industry: "",
-            desired_problem_to_solve: "",
-          },
-        });
-      } catch (error) {
-        toast.error("Failed to save item.");
-      } finally {
-        setPending(false);
-      }
-    } else {
-      toast.error("Please fill out all fields correctly.");
-      form.reportValidity();
-    }
-  };
-
   return (
     <>
       <Toaster
@@ -474,13 +518,13 @@ const Formulario = () => {
         reverseOrder={true}
         toastOptions={{
           success: {
-            duration: 10000,
+            duration: 15000,
             theme: {
               primary: "green",
             },
           },
           loading: {
-            duration: 1500,
+            duration: 6000,
           },
         }}
       />
