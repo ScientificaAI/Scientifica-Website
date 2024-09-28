@@ -56,12 +56,51 @@ import Card from "./Card.astro";
     flex-direction: column;
   }
 
+  .section__left {
+    background-color: #0024ff;
+    color: white;
+    padding: 0 0.5rem 0 0.5rem;
+    display: flex;
+  }
+
+  @media (min-width: 768px) {
+    .section__left {
+      padding: 0 2.5rem 0 2.5rem;
+    }
+  }
+
+  .section__left > p {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    padding: 1rem;
+    display: flex;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .section__left > p {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      text-align: start;
+      padding: 2.5rem;
+    }
+  }
+
   .section__right {
     display: flex;
     flex-direction: column;
     margin-bottom: 5rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+  }
+  @media (min-width: 768px) {
+    .section__right {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5rem;
+      margin-left: 5rem;
+      margin-right: 5rem;
+    }
   }
 
   .section__right-content {
@@ -74,13 +113,15 @@ import Card from "./Card.astro";
   @media (min-width: 768px) {
     .section__right-content {
       grid-template-columns: 1fr 1fr;
+      place-items: center;
       gap: 2rem;
     }
   }
 
   .section__right-text {
     margin-top: 3.5rem;
-    font-size: 2.5rem;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
     color: #171717;
   }
 
@@ -88,29 +129,6 @@ import Card from "./Card.astro";
     .section__right-text {
       font-size: 1rem;
       line-height: 1.5rem/;
-    }
-  }
-
-  .section__left {
-    background-color: #0024ff;
-    color: white;
-    padding: 0 2.5rem 0 2.5rem;
-    display: flex;
-  }
-
-  .section__left > p {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    padding: 2.5rem;
-    display: flex;
-    text-align: center;
-  }
-
-  @media (min-width: 768px) {
-    .section__left > p {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      text-align: start;
     }
   }
 
@@ -126,6 +144,7 @@ import Card from "./Card.astro";
   @media (min-width: 768px) {
     .section__right-card {
       grid-template-columns: repeat(2, 1fr);
+      place-items: center;
       margin-bottom: 6rem;
       margin-top: 0;
     }

@@ -4,18 +4,18 @@ import Card2 from "./Card2.astro";
 ---
 
 <section class="flex-2 md:mx-10 md:max-h-dvh px-8 py-6">
-  <h2 class="text-6xl md:font-medium md:text-4xl pb-6">Our services</h2>
+  <h2 class="text-4xl md:font-medium md:text-4xl pb-6">Our services</h2>
 
   <div class="grid md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-3">
     {card2.map((card) => <Card2 {...card} />)}
   </div>
 
   <div
-    class="md:block flex justify-center items-center mb-10 my-10 bg-[#0024ff] rounded-lg cursor-pointer p-2 w-[800px] m-auto md:w-[250px] hover:bg-blue-500"
+    class="md:block flex justify-center items-center mb-10 my-10 bg-[#0024ff] rounded-lg cursor-pointer p-2 w-[380px] m-auto md:w-[250px] hover:bg-blue-500"
   >
     <a
       href="/services"
-      class="text-white md:flex md:justify-center md:items-center text-4xl md:text-lg font-semibold text-center rounded-lg py-2 px-4"
+      class="text-white md:flex md:justify-center md:items-center text-xl md:text-lg font-semibold text-center rounded-lg py-2 px-4"
     >
       See our Services
     </a>
