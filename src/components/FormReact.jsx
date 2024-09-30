@@ -302,7 +302,7 @@ const Formulario = () => {
       "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
 
     const endPoint2 =
-      "https://script.google.com/macros/s/AKfycbzr5EDbRi8dV1cimYJ1hcS91GhiZW9iIY2GB49eeVCmiDdH10fyodn2AEPhv62dG9E8dg/exec";
+      "https://script.google.com/macros/s/AKfycbwriK3R6w-fgbNbtdzppocQo39hiDuyaYpfuSXJqtbVoAW89eyWVLqaVuKqRf-jsCmUjw/exec";
 
     const id2 = uuidv4();
 
@@ -318,14 +318,30 @@ const Formulario = () => {
       desired_technology_stack: formData.lookingfor.desired_technology_stack,
       desired_industry: formData.lookingfor.desired_industry,
       desired_problem_to_solve: formData.lookingfor.desired_problem_to_solve,
-      experiences: formData.experiences.map((experience) => ({
+      research_fields: formData.experiences.map(
+        (research) => research.research_fields
+      ),
+      university_affiliation: formData.experiences.map(
+        (university) => university.university_affiliation
+      ),
+      fields_of_study: formData.experiences.map(
+        (studies) => studies.fields_of_study
+      ),
+      problem_solved: formData.experiences.map(
+        (problem) => problem.problem_solved
+      ),
+      technology_stack_experience: formData.experiences.map(
+        (tech) => tech.technology_stack_experience
+      ),
+      industries: formData.experiences.map((ind) => ind.industries),
+      /* experiences: formData.experiences.map((experience) => ({
         research_fields: experience.research_fields,
         university_affiliation: experience.university_affiliation,
         fields_of_study: experience.fields_of_study,
         problem_solved: experience.problem_solved,
         technology_stack_experience: experience.technology_stack_experience,
         industries: experience.industries,
-      })),
+      })), */
       studies: formData.studies.map((study) => ({
         degree: study.degree,
         university: study.university,
@@ -524,7 +540,7 @@ const Formulario = () => {
             },
           },
           loading: {
-            duration: 6000,
+            duration: 8000,
           },
         }}
       />
