@@ -334,14 +334,6 @@ const Formulario = () => {
         (tech) => tech.technology_stack_experience
       ),
       industries: formData.experiences.map((ind) => ind.industries),
-      /* experiences: formData.experiences.map((experience) => ({
-        research_fields: experience.research_fields,
-        university_affiliation: experience.university_affiliation,
-        fields_of_study: experience.fields_of_study,
-        problem_solved: experience.problem_solved,
-        technology_stack_experience: experience.technology_stack_experience,
-        industries: experience.industries,
-      })), */
       studies: formData.studies.map((study) => ({
         degree: study.degree,
         university: study.university,
