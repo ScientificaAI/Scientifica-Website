@@ -684,7 +684,7 @@ const Formulario = () => {
           </div>
 
           <>
-            {formData.studies.length <= 1 && (
+            {formData.studies.length <= 3 && (
               <button
                 id="btn-action"
                 onClick={() => handleAddSection("studies")}
@@ -766,7 +766,7 @@ const Formulario = () => {
           </div>
         </div>
 
-        {formData.experiences.length <= 1 && (
+        {formData.experiences.length <= 3 && (
           <button
             id="btn-action"
             onClick={() => handleAddSection("experiences")}
