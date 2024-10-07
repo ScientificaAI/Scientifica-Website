@@ -147,6 +147,8 @@ const SimpleForm = () => {
       ...formData,
     };
 
+    toast.loading("sending...");
+
     setFormData({
       first_name: "",
       last_name: "",
@@ -156,7 +158,6 @@ const SimpleForm = () => {
     });
 
     setIsSubmitting(true);
-    toast.loading("sending...");
 
     if (form.checkValidity()) {
       try {
