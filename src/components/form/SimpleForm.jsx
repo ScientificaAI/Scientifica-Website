@@ -134,21 +134,33 @@ const SimpleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
-    const endPoint =
-      "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
     const id2 = uuidv4();
+
+    const endPoint1 =
+      "https://vesixjiekf.execute-api.us-east-1.amazonaws.com/items";
+
+    const endPoint2 =
+      "https://script.google.com/macros/s/AKfycbwriK3R6w-fgbNbtdzppocQo39hiDuyaYpfuSXJqtbVoAW89eyWVLqaVuKqRf-jsCmUjw/exec";
 
     const data1 = {
       id: id2,
       ...formData,
     };
 
+    setFormData({
+      first_name: "",
+      last_name: "",
+      email: "",
+      country: "",
+      message: "",
+    });
+
     setIsSubmitting(true);
     toast.loading("sending...");
 
     if (form.checkValidity()) {
       try {
-        const response = await fetch(endPoint, {
+        const response = await fetch(endPoint1, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -161,20 +173,29 @@ const SimpleForm = () => {
         }
 
         const data = await response.json();
-        setMessage("Data sent successfully!");
-        toast.success("Data sent successfully!");
-        setFormData({
-          first_name: "",
-          last_name: "",
-          email: "",
-          country: "",
-          message: "",
+
+        //Google Sheets endPoint
+        const response2 = await fetch(endPoint2, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "no-cors",
+          body: JSON.stringify(data1),
         });
+
+        if (!response2.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const result = await response2.json();
+        console.log(result);
       } catch (error) {
-        setMessage("Error sending data: " + error.message);
-        toast.error(message);
+        //setMessage("Error sending data: " + error.message);
+        console.error(message);
       } finally {
         setIsSubmitting(false);
+        toast.success("Data sent successfully!");
       }
     } else {
       setMessage("Please fill out all fields correctly.");
@@ -190,13 +211,13 @@ const SimpleForm = () => {
         reverseOrder={true}
         toastOptions={{
           success: {
-            duration: 10000,
+            duration: 12000,
             theme: {
               primary: "green",
             },
           },
           loading: {
-            duration: 3000,
+            duration: 8000,
           },
         }}
       />
