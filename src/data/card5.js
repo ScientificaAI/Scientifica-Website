@@ -6,7 +6,7 @@ import Tm4 from "../components/Tm4.astro";
 export const card5 = [
   {
     title: "Grow business with knowledge-rich research",
-    body: "Truly valuable innovation is driven by data and newly acquired knowledge and research is the key to acquiring both. At scientifica, our research services encompass your business R&D and research needs. We design and conduct qualitative studies and quantitative research to find answers to the most challenging questions you have utilizing an array of sophisticated research methodologies. Our R&D service provides you with the knowledge to make critical business decisions and build new products with conviction and sound information.",
+    body: "Truly valuable innovation is driven by data and newly acquired knowledge and research is the key to acquiring both. At Scientifica, our research services encompass your business R&D and research needs. We design and conduct qualitative studies and quantitative research to find answers to the most challenging questions you have utilizing an array of sophisticated research methodologies. Our R&D service provides you with the knowledge to make critical business decisions and build new products with conviction and sound information.",
     logo: Tm1,
   },
   {
