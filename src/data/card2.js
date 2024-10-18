@@ -13,6 +13,6 @@ export const card2 = [
   },
   {
     title: "Research",
-    body: "We offer a comprehensive set of scientific research services that provide sound knowledge and actionable information to businesses regarding their product plans and business problems. Led by a team of subject matter experts, we design and conduct sophisticated studies that meet client needs and deliver answers.",
+    body: "We offer a comprehensive set of scientific research services that provide sound knowledge and actionable information to businesses regarding their product plans and business problems. Led by a team of subject-matter experts, we design and conduct sophisticated studies that meet client needs and deliver answers.",
   },
 ];
