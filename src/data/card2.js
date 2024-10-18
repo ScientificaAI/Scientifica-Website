@@ -1,7 +1,7 @@
 export const card2 = [
   {
     title: "Digital Strategy",
-    body: "We approach Digital Strategy with the use of technologies such as artificial intelligence, machine learning , robotics, data analytics, and the Internet of Things (IoT). As these technologies dramatically reshape industries, many companies are pursuing large-scale change efforts to capture the benefits of these trends or simply to keep up with competitors.",
+    body: "We approach Digital Strategy with the use of technologies such as artificial intelligence, machine learning, robotics, data analytics, and the Internet of Things (IoT). As these technologies dramatically reshape industries, many companies are pursuing large-scale change efforts to capture the benefits of these trends or simply to keep up with competitors.",
   },
   {
     title: "Digital Product Development",
