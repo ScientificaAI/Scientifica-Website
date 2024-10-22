@@ -149,50 +149,52 @@ import IconMedium from "./IconMedium.astro";
   }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script is:inline data-astro-rerun>
+  document.addEventListener("astro:page-load", () => {
     const menuButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-nav");
 
-    menuButton!.addEventListener("click", () => {
-      mobileMenu!.classList.toggle("mobile-active");
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("mobile-active");
     });
   });
 </script>
 
-<script>
-  const header = document.querySelector("header");
-  let lastScroll = 0;
+<script is:inline data-astro-rerun>
+  document.addEventListener("astro:page-load", () => {
+    const header = document.querySelector("header");
+    let lastScroll = 0;
 
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
 
-    if (currentScroll <= 0) {
-      header!.classList.remove("scroll-up");
-    }
+      if (currentScroll <= 0) {
+        header.classList.remove("scroll-up");
+      }
 
-    if (
-      currentScroll > lastScroll &&
-      !header!.classList.contains("scroll-down")
-    ) {
-      header!.classList.remove("scroll-up");
-      header!.classList.add("scroll-down");
-    }
+      if (
+        currentScroll > lastScroll &&
+        !header.classList.contains("scroll-down")
+      ) {
+        header.classList.remove("scroll-up");
+        header.classList.add("scroll-down");
+      }
 
-    if (
-      currentScroll < lastScroll &&
-      header!.classList.contains("scroll-down")
-    ) {
-      header!.classList.remove("scroll-down");
-      header!.classList.add("scroll-up");
-    }
+      if (
+        currentScroll < lastScroll &&
+        header.classList.contains("scroll-down")
+      ) {
+        header.classList.remove("scroll-down");
+        header.classList.add("scroll-up");
+      }
 
-    lastScroll = currentScroll;
+      lastScroll = currentScroll;
+    });
   });
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script is:inline data-astro-rerun>
+  document.addEventListener("astro:page-load", () => {
     const navlinks = document.querySelectorAll("a");
     const windowPath = window.location.pathname;
 
