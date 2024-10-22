@@ -82,8 +82,8 @@ const { title, body } = Astro.props;
   }
 </style>
 
-<script is:inline data-astro-rerun>
-  document.addEventListener("astro:page-load", function () {
+<script>
+  document.addEventListener("astro:after-swap", function () {
     let items = document.querySelectorAll(".item");
 
     items.forEach((item) => {

@@ -93,7 +93,7 @@ const { title, body } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("astro:after-swap", function () {
     let items = document.querySelectorAll(".item");
 
     items.forEach((item) => {
