@@ -3,99 +3,103 @@ import IconArrow2 from "./IconArrow2.astro";
 
 interface Props {
   title: string;
-  body: string;
+  body: string | string[];
 }
 
 const { title, body } = Astro.props;
 ---
 
-<div class="item">
-  <div class="title">
-    <div class="text">{title}</div>
-    <div class="dropdown"><IconArrow2 /></div>
-  </div>
-  <div class="contain">
-    <p>{body}</p>
+<div
+  class="accordion group relative w-full bg-white p-5 border-b border-gray-300 mb-2 cursor-pointer transition-all duration-500"
+>
+  <button
+    class="accordion__button flex w-full justify-between items-center text-left font-medium transition hover:text-[#0024ff]"
+    type="button"
+    id={`${title} accordion menu button`}
+    aria-expanded="false"
+    aria-controls={`${title} accordion menu content`}
+  >
+    <span class="text w-[calc(100%-30px)]">{title}</span>
+
+    <svg
+      class="accordion__chevron h-7 w-7 transform rotate-360 transition-transform duration-500"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m6 9l6 6l6-6"></path>
+    </svg>
+  </button>
+
+  <div
+    id={`${title} accordion menu content`}
+    aria-labelledby={`${title} accordion menu button`}
+    class="accordion__content max-h-0 overflow-hidden transition-all ease-in-out duration-500"
+  >
+    {
+      Array.isArray(body) ? (
+        <ul class="list-disc pl-5 pt-2">
+          {body.map((point) => (
+            <li class="mb-1">{point}</li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-gray-500 py-2">{body}</p>
+      )
+    }
   </div>
 </div>
-<style>
-  .item {
-    background-color: white;
-    width: 100%;
-    padding: 20px;
-    border-bottom: 1.6px solid rgb(224, 224, 224);
-
-    transition: 0.5s;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-
-  .item .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .item .title .text {
-    width: calc(100% - 30px);
-  }
-
-  .item .title .dropdown {
-    width: max-content;
-    font-size: x-large;
-    transform: rotate(360deg);
-    transition: 0.5s;
-  }
-
-  .item .contain {
-    overflow: hidden;
-    max-height: 0;
-    transition: all 0.5s ease;
-  }
-
-  .item.active {
-    cursor: auto;
-  }
-
-  .item.active .title .text {
-    font-weight: bold;
-  }
-
-  .item.active .title .dropdown {
-    transform: rotate(-90deg);
-  }
-
-  .item.active .contain {
-    max-height: 500px;
-    color: gray;
-    padding: 10px 0 10px 0;
-  }
-
-  .item ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    padding-top: 10px;
-  }
-
-  .item ul li {
-    margin-bottom: 5px;
-  }
-</style>
 
 <script>
-  document.addEventListener("astro:after-swap", function () {
-    let items = document.querySelectorAll(".item");
+  function accordionSetup() {
+    const accordionMenus = document.querySelectorAll(
+      ".accordion"
+    ) as NodeListOf<HTMLElement>;
 
-    items.forEach((item) => {
-      item.classList.remove("active");
-      item.addEventListener("click", function () {
-        if (item.classList.contains("active")) {
-          item.classList.remove("active");
-        } else {
-          items.forEach((el) => el.classList.remove("active"));
-          item.classList.add("active");
-        }
-      });
+    accordionMenus.forEach((accordionMenu) => {
+      const accordionButton = accordionMenu.querySelector(
+        ".accordion__button"
+      ) as HTMLElement;
+      const accordionChevron = accordionMenu.querySelector(
+        ".accordion__chevron"
+      ) as HTMLElement;
+      const accordionContent = accordionMenu.querySelector(
+        ".accordion__content"
+      ) as HTMLElement;
+
+      if (accordionButton && accordionContent && accordionChevron) {
+        accordionButton.addEventListener("click", (event) => {
+          if (!accordionMenu.classList.contains("active")) {
+            accordionMenu.classList.add("active");
+            accordionButton.setAttribute("aria-expanded", "true");
+
+            accordionContent.style.maxHeight =
+              accordionContent.scrollHeight + "px";
+            accordionChevron.style.transform = "rotate(-90deg)";
+          } else {
+            accordionMenu.classList.remove("active");
+            accordionButton.setAttribute("aria-expanded", "false");
+
+            accordionContent.style.maxHeight = "0px";
+            accordionChevron.style.transform = "rotate(360deg)";
+          }
+          event.preventDefault();
+        });
+      }
     });
-  });
+  }
+
+  // runs on initial page load
+  accordionSetup();
+
+  // runs on view transitions navigation
+  document.addEventListener("astro:after-swap", accordionSetup);
 </script>
