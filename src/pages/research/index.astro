@@ -30,98 +30,114 @@ import Layout from "../../layouts/Layout.astro";
       </div>
     </section>
 
-    <section class="md:mt-20 mt-10 md:mx-20 md:my-10">
-      <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
-        <h2>Empowering Innovation through Tailored Research Services</h2>
-      </div>
-      <p
-        class="md:p-10 p-4 text-[#404040] text-center md:text-xl text-2xl font-light"
+    <div class="scroll-reveal flex-1 bg-white rounded-xl shadow-md p-6">
+      <section
+        class="md:mt-20 mt-10 md:mx-20 md:my-10 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
       >
-        <span>
-          Our research services are tailored to the specific needs of our
-          clients, and we strive to deliver impactful results that drive
-          innovation and create value. By combining scientific rigor with
-          technological advancements, we enable organizations to unlock the
-          power of research and stay at the forefront of their industries.
-        </span>
-      </p>
-
-      <Card5 />
-    </section>
-
-    <section class="bg-[#eeeded] md:px-20 py-12">
-      <div class="md:my-4 md:pb-4">
-        <div class="flex items-center justify-center text-4xl font-bold py-4">
-          <h2>Our Research Services</h2>
+        <div class="text-4xl font-bold text-center m-auto max-w-[740px]">
+          <h2>Empowering Innovation through Tailored Research Services</h2>
         </div>
-
-        <div class="px-4 py-6 text-center">
-          <p class="md:text-lg text-xl font-light text-[#404040]">
-            Scientifica offers a comprehensive range of research services that
-            combine cutting-edge scientific methodologies with advanced
-            technologies. Our research services are designed to provide valuable
-            insights, drive innovation, and address real-world challenges across
-            various industries. Here are some of the research services provided
-            by Scientifica.
-          </p>
-        </div>
-      </div>
-
-      <!--Accordion -->
-
-      <div class="mx-3 p-2 bg-white rounded-xl">
-        {list2.map((list) => <Accordion2 {...list} />)}
-      </div>
-    </section>
-
-    <section class="md:mt-20 mt-6 md:mx-20 md:my-10">
-      <div class="flex items-center justify-center md:pt-10 text-4xl font-bold">
-        <h2 class="text-center">Our command of research methods</h2>
-      </div>
-      <div
-        class="flex items-center justify-center md:p-10 p-4 text-2xl font-light"
-      >
-        <span class="text-center">
-          We conduct our scientific research services for businesses with
-          advanced knowledge of the following research methodologies and
-          approaches
-        </span>
-      </div>
-
-      <article class="md:m-10 mx-8 my-12">
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 md:place-items-start md:px-20 bg-white rounded-xl border-[0.5px] border-slate-300 md:border-0 md:shadow-lg"
+        <p
+          class="md:p-10 p-4 text-[#404040] text-center md:text-xl text-2xl font-light"
         >
-          <div class="md:m-2">
-            <ul class="text-[#737373]">
-              {col1.map((raw) => <li class="m-6">{raw.title}</li>)}
-            </ul>
+          <span>
+            Our research services are tailored to the specific needs of our
+            clients, and we strive to deliver impactful results that drive
+            innovation and create value. By combining scientific rigor with
+            technological advancements, we enable organizations to unlock the
+            power of research and stay at the forefront of their industries.
+          </span>
+        </p>
+
+        <Card5 />
+      </section>
+
+      <section
+        class="bg-[#eeeded] md:px-20 py-12 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+      >
+        <div class="md:my-4 md:pb-4">
+          <div class="flex items-center justify-center text-4xl font-bold py-4">
+            <h2>Our Research Services</h2>
           </div>
-          <div class="md:m-2">
-            <ul class="text-[#737373]">
-              {col2.map((raw) => <li class="m-6">{raw.title}</li>)}
-            </ul>
-          </div>
-          <div class="md:m-2">
-            <ul class="text-[#737373]">
-              {col3.map((raw) => <li class="m-6">{raw.title}</li>)}
-            </ul>
+
+          <div class="px-4 py-6 text-center">
+            <p class="md:text-lg text-xl font-light text-[#404040]">
+              Scientifica offers a comprehensive range of research services that
+              combine cutting-edge scientific methodologies with advanced
+              technologies. Our research services are designed to provide
+              valuable insights, drive innovation, and address real-world
+              challenges across various industries. Here are some of the
+              research services provided by Scientifica.
+            </p>
           </div>
         </div>
-      </article>
-    </section>
 
-    <section class="bg-[#eeeded] py-10">
-      <GridSection title="Why choose our research services" card={card6} />
-    </section>
+        <!--Accordion -->
+
+        <div class="mx-3 p-2 bg-white rounded-xl">
+          {list2.map((list) => <Accordion2 {...list} />)}
+        </div>
+      </section>
+
+      <section class="md:mt-20 mt-6 md:mx-20 md:my-10">
+        <div
+          class="flex items-center justify-center md:pt-10 text-4xl font-bold"
+        >
+          <h2 class="text-center">Our command of research methods</h2>
+        </div>
+        <div
+          class="flex items-center justify-center md:p-10 p-4 text-2xl font-light"
+        >
+          <span
+            class="text-center intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
+            We conduct our scientific research services for businesses with
+            advanced knowledge of the following research methodologies and
+            approaches
+          </span>
+        </div>
+
+        <article class="md:m-10 mx-8 my-12">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 md:place-items-start md:px-20 bg-white rounded-xl border-[0.5px] border-slate-300 md:border-0 md:shadow-lg"
+          >
+            <div
+              class="md:m-2 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            >
+              <ul class="text-[#737373]">
+                {col1.map((raw) => <li class="m-6">{raw.title}</li>)}
+              </ul>
+            </div>
+            <div
+              class="md:m-2 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            >
+              <ul class="text-[#737373]">
+                {col2.map((raw) => <li class="m-6">{raw.title}</li>)}
+              </ul>
+            </div>
+            <div
+              class="md:m-2 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            >
+              <ul class="text-[#737373]">
+                {col3.map((raw) => <li class="m-6">{raw.title}</li>)}
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bg-[#eeeded] py-10">
+        <GridSection title="Why choose our research services" card={card6} />
+      </section>
+    </div>
   </main>
-</Layout>
 
-<style>
-  main {
-    margin-top: 60px;
-  }
-  li {
-    list-style: disc;
-  }
-</style>
+  <style>
+    main {
+      margin-top: 60px;
+    }
+    li {
+      list-style: disc;
+    }
+  </style>
+</Layout>
