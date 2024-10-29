@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import animations from "@midudev/tailwind-animations";
+import plugin from "tailwindcss/plugin";
 
 export default {
   content: [
@@ -12,7 +13,22 @@ export default {
         8: "8",
         10: "10",
       },
+      animation: {
+        fade: "fadeInUp 1s both",
+      },
+
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: 0, transform: "translateY(2rem)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+      },
     },
   },
-  plugins: [animations],
+  plugins: [
+    animations,
+    plugin(({ addVariant }) => {
+      addVariant("intersect", "&:not([no-intersect])");
+    }),
+  ],
 };
