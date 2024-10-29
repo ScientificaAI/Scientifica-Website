@@ -193,7 +193,7 @@ import IconMedium from "./IconMedium.astro";
   });
 </script>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   document.addEventListener("astro:after-swap", () => {
     const navlinks = document.querySelectorAll("a");
     const windowPath = window.location.pathname;
