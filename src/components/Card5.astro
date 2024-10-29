@@ -2,7 +2,9 @@
 import { card5 } from "../data/card5.js";
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:mx-10 mx-2">
+<div
+  class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:mx-10 mx-2 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+>
   {
     card5.map((card) => (
       <div class="scroll-reveal flex-1 bg-white rounded-xl shadow-md p-6 ">
